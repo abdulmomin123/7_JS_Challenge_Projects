@@ -152,9 +152,10 @@ main {
   position: absolute;
   left: 50%;
   top: 16.5rem;
-  transform: translateX(-50%);
   height: 10rem;
+  border-radius: 20px;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+  transform: translateX(-50%);
 }
 
 .player--winner {
