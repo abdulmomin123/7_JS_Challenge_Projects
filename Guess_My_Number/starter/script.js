@@ -93,5 +93,3 @@ function again() {
 elements.check.addEventListener('click', evalGuess);
 elements.userInput.addEventListener('keypress', evalGuess);
 elements.again.addEventListener('click', again);
-
-console.log(secretNum);
