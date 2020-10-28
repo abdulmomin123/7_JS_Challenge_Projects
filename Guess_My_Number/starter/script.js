@@ -19,10 +19,7 @@ function evalGuess() {
 
   if (!userGuess && userGuess !== 0) {
     elements.hint.textContent = '⛔️ No number!';
-    return;
-  }
-
-  if (userGuess > secretNum) {
+  } else if (userGuess > secretNum) {
     wrongGuess('high');
   } else if (userGuess < secretNum) {
     wrongGuess('low');
@@ -46,9 +43,7 @@ function wrongGuess(numState) {
 }
 
 function correctGuess() {
-  elements.hint.textContent = '🎉 Correct Number!';
-  elements.number.textContent = secretNum;
-  document.body.classList.add('win');
+  updateUI(true);
 }
 
 function updateUI(isWin) {
@@ -56,7 +51,9 @@ function updateUI(isWin) {
 
   if (isWin) {
     elements.highScore.textContent = score;
+    elements.hint.textContent = '🎉 Correct Number!';
     elements.number.textContent = secretNum;
+    document.body.classList.add('win');
   }
 }
 
