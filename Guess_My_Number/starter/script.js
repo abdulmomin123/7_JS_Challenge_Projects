@@ -48,6 +48,7 @@ function wrongGuess(numState) {
 
 function correctGuess() {
   highScore = score > highScore ? score : highScore;
+  elements.userInput.value = '';
 
   updateUI(true);
 }
@@ -83,6 +84,7 @@ function again() {
   score = 20;
   elements.userInput;
 
+  elements.userInput.value = '';
   elements.number.textContent = '?';
   elements.score.textContent = score;
   elements.hint.textContent = 'Start guessing...';
