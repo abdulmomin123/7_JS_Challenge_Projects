@@ -35,11 +35,13 @@ function evalGuess() {
 
 function wrongGuess(numState) {
   if (numState === 'low') {
+    score--;
     elements.hint.textContent = '📉 Too low!';
-    score--;
+    updateUI(false);
   } else {
-    elements.hint.textContent = '📈 Too high!';
     score--;
+    elements.hint.textContent = '📈 Too high!';
+    updateUI(false);
   }
 }
 
