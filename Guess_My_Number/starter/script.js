@@ -28,6 +28,10 @@ function evalGuess(e) {
   } else {
     correctGuess();
   }
+
+  if (score < 1) {
+    lost();
+  }
 }
 
 function wrongGuess(numState) {
@@ -56,9 +60,8 @@ function updateUI(isWin) {
     elements.hint.textContent = '🎉 Correct Number!';
     elements.number.textContent = secretNum;
     document.body.classList.add('win');
+    toggleListeners('remove');
   }
-
-  toggleListeners('remove');
 }
 
 function toggleListeners(task) {
@@ -67,7 +70,8 @@ function toggleListeners(task) {
 }
 
 function lost() {
-  //
+  elements.hint.textContent = '💥 You lost the game!';
+  toggleListeners('remove');
 }
 
 function again() {
