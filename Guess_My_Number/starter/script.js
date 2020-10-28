@@ -46,10 +46,6 @@ function correctGuess() {
   highScore = score > highScore ? score : highScore;
 
   updateUI(true);
-
-  elements.userInput;
-  score = 0;
-  secretNum = Math.floor(Math.random() * 20 + 1);
 }
 
 function updateUI(isWin) {
@@ -75,7 +71,19 @@ function lost() {
 }
 
 function again() {
-  //
+  if (document.body.classList.contains('win')) {
+    document.body.classList.remove('win');
+  }
+
+  secretNum = Math.floor(Math.random() * 20 + 1);
+  score = 0;
+  elements.userInput;
+
+  elements.number.textContent = '?';
+  elements.score.textContent = score;
+  elements.hint.textContent = 'Start guessing...';
+
+  toggleListeners('add');
 }
 
 elements.check.addEventListener('click', evalGuess);
