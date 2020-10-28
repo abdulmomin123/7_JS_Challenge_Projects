@@ -4,8 +4,8 @@ const elements = {
   userInput: document.querySelector('.guess'),
   check: document.querySelector('.check'),
   hint: document.querySelector('.message'),
-  score: document.querySelector('.label-score'),
-  highScore: document.querySelector('.label-highscore'),
+  score: document.querySelector('.score'),
+  highScore: document.querySelector('.highscore'),
   number: document.querySelector('.number'),
   again: document.querySelector('.again'),
 };
@@ -47,6 +47,15 @@ function correctGuess() {
   elements.hint.textContent = '🎉 Correct Number!';
   elements.number.textContent = secretNum;
   document.body.classList.add('win');
+}
+
+function updateUI(isWin) {
+  elements.score.textContent = score;
+
+  if (isWin) {
+    elements.highScore.textContent = score;
+    elements.number.textContent = secretNum;
+  }
 }
 
 function lost() {
