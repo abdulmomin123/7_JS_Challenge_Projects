@@ -14,7 +14,9 @@ let secretNum = Math.floor(Math.random() * 20 + 1);
 let score = 20;
 let highScore = 0;
 
-function evalGuess() {
+function evalGuess(e) {
+  if (e.keyCode !== 13) return;
+
   const userGuess = parseInt(elements.userInput.value);
 
   if (!userGuess && userGuess !== 0) {
@@ -66,6 +68,7 @@ function again() {
 }
 
 elements.check.addEventListener('click', evalGuess);
+elements.userInput.addEventListener('keypress', evalGuess);
 elements.again.addEventListener('click', again);
 
 console.log(secretNum);
