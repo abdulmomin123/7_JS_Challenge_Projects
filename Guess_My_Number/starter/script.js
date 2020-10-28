@@ -11,10 +11,8 @@ const elements = {
 };
 
 let secretNum = Math.floor(Math.random() * 20 + 1);
-
-function test() {
-  console.log('hi');
-}
+let score = 20;
+let highScore = 0;
 
 function evalGuess() {
   const userGuess = parseInt(elements.userInput.value);
@@ -27,13 +25,20 @@ function evalGuess() {
   if (userGuess > secretNum) {
     elements.hint.textContent = '📈 Too high!';
     return;
+  } else if (userGuess < secretNum) {
+    elements.hint.textContent = '📉 Too low!';
+    return;
+  } else {
+    win();
   }
 
   console.log(userGuess);
 }
 
 function win() {
-  //
+  elements.hint.textContent = '🎉 Correct Number!';
+  elements.number.textContent = secretNum;
+  document.body.classList.add('win');
 }
 
 function lost() {
