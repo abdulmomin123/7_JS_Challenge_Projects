@@ -17,7 +17,13 @@ function test() {
 }
 
 function evalGuess() {
-  //
+  const userGuess = parseInt(elements.userInput.value);
+  if (!userGuess && userGuess !== 0) {
+    elements.hint.textContent = '⛔️ No number!';
+    return;
+  }
+
+  console.log(userGuess);
 }
 
 function win() {
