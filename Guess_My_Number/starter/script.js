@@ -49,7 +49,7 @@ function correctGuess() {
 }
 
 function updateUI(isWin) {
-  elements.score.value = score;
+  elements.score.textContent = score;
 
   if (isWin) {
     elements.highScore.textContent = score;
@@ -76,7 +76,7 @@ function again() {
   }
 
   secretNum = Math.floor(Math.random() * 20 + 1);
-  score = 0;
+  score = 20;
   elements.userInput;
 
   elements.number.textContent = '?';
