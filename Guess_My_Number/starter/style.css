@@ -6,6 +6,11 @@
   box-sizing: inherit;
 }
 
+/* JS Classes */
+.score {
+  background-color: #60b347;
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -15,7 +20,6 @@ body {
   font-family: 'Press Start 2P', sans-serif;
   color: #eee;
   background-color: #222;
-  /* background-color: #60b347; */
 }
 
 /* LAYOUT */
