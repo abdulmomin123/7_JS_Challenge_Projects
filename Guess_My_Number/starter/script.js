@@ -26,8 +26,6 @@ function evalGuess() {
   } else {
     correctGuess();
   }
-
-  console.log(userGuess);
 }
 
 function wrongGuess(numState) {
@@ -43,6 +41,8 @@ function wrongGuess(numState) {
 }
 
 function correctGuess() {
+  highScore = score > highScore ? score : highScore;
+
   updateUI(true);
 }
 
