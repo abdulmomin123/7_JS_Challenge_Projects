@@ -61,6 +61,13 @@ function updateUI(isWin) {
     elements.number.textContent = secretNum;
     document.body.classList.add('win');
   }
+
+  toggleListeners('remove');
+}
+
+function toggleListeners(task) {
+  elements.check[task + 'EventListener']('click', evalGuess);
+  elements.userInput[task + 'EventListener']('keypress', evalGuess);
 }
 
 function lost() {
