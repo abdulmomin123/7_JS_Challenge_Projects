@@ -24,6 +24,11 @@ function evalGuess() {
     return;
   }
 
+  if (userGuess > secretNum) {
+    elements.hint.textContent = '📈 Too high!';
+    return;
+  }
+
   console.log(userGuess);
 }
 
