@@ -15,7 +15,7 @@ let score = 20;
 let highScore = 0;
 
 function evalGuess(e) {
-  if (e.keyCode !== 13) return;
+  if (e.keyCode && e.keyCode !== 13) return;
 
   const userGuess = parseInt(elements.userInput.value);
 
@@ -44,12 +44,13 @@ function wrongGuess(numState) {
 
 function correctGuess() {
   highScore = score > highScore ? score : highScore;
+  elements.userInput;
 
   updateUI(true);
 }
 
 function updateUI(isWin) {
-  elements.score.textContent = score;
+  elements.score.value = score;
 
   if (isWin) {
     elements.highScore.textContent = score;
