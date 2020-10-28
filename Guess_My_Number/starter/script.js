@@ -44,9 +44,12 @@ function wrongGuess(numState) {
 
 function correctGuess() {
   highScore = score > highScore ? score : highScore;
-  elements.userInput;
 
   updateUI(true);
+
+  elements.userInput;
+  score = 0;
+  secretNum = Math.floor(Math.random() * 20 + 1);
 }
 
 function updateUI(isWin) {
