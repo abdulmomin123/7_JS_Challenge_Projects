@@ -23,19 +23,27 @@ function evalGuess() {
   }
 
   if (userGuess > secretNum) {
-    elements.hint.textContent = '📈 Too high!';
-    return;
+    wrongGuess('high');
   } else if (userGuess < secretNum) {
-    elements.hint.textContent = '📉 Too low!';
-    return;
+    wrongGuess('low');
   } else {
-    win();
+    correctGuess();
   }
 
   console.log(userGuess);
 }
 
-function win() {
+function wrongGuess(numState) {
+  if (numState === 'low') {
+    elements.hint.textContent = '📉 Too low!';
+    score--;
+  } else {
+    elements.hint.textContent = '📈 Too high!';
+    score--;
+  }
+}
+
+function correctGuess() {
   elements.hint.textContent = '🎉 Correct Number!';
   elements.number.textContent = secretNum;
   document.body.classList.add('win');
