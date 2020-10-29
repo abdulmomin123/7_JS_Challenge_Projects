@@ -11,6 +11,9 @@ const elements = {
   current0: document.getElementById('current--0'),
   score1: document.getElementById('score--1'),
   current1: document.getElementById('current--1'),
+
+  //   Dice image
+  dice: document.querySelector('.dice'),
 };
 
 // Global scores
@@ -19,7 +22,11 @@ let playerTwoScore = 0;
 
 // For rolling the dice
 function rollDice() {
+  // Create a random numbe
   const dice = Math.trunc(Math.random() * 6 + 1);
+
+  // Display the dice
+  elements.dice.setAttribute('src', `dice-${dice}.png`);
 
   console.log(dice);
 }
