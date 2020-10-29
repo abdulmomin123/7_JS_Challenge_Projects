@@ -17,6 +17,8 @@ const elements = {
 
   //   players
   players: document.querySelectorAll('.player--0, .player--1'),
+  player1: document.querySelector('.player--0'),
+  player2: document.querySelector('.player--1'),
 };
 
 // Global scores
@@ -59,7 +61,7 @@ function holdScore() {
 
 // For a new game
 function newGame(winningScore) {
-  //
+  switchPlayer(2);
 }
 
 function displayScore(activePlayer) {
@@ -81,21 +83,15 @@ function switchPlayer(currentPlayer) {
   activePlayer = currentPlayer === 1 ? 2 : 1;
 
   //   remove class
-  if (currentPlayer > 1) {
-    elements.players[1].classList.remove('player--active');
-  } else {
-    elements.players[0].classList.remove('player--active');
-  }
+  elements[`player${currentPlayer}`].classList.remove('player--active');
 
   //   add class
-  if (currentPlayer > 1) {
-    elements.players[0].classList.add('player--active');
-  } else {
-    elements.players[1].classList.add('player--active');
-  }
+  currentPlayer === 1
+    ? elements.player2.classList.add('player--active')
+    : elements.player1.classList.add('player--active');
 }
 
 // Event handlers
 elements.rollDice.addEventListener('click', rollDice);
 elements.holdScore.addEventListener('click', holdScore);
-elements.newGame.addEventListener('click', newGame.bind(null, 100));
+elements.newGame.addEventListener('click', newGame);
