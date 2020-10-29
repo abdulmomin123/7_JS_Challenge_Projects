@@ -43,15 +43,11 @@ function rollDice() {
   //   if rolls a 1 : (
   if (dice === 1) {
     resetScores(activePlayer);
-    displayScore(activePlayer);
     switchPlayer(activePlayer);
-    return;
   }
 
   //   Display current Score
   displayScore(activePlayer);
-
-  console.log(dice);
 }
 
 // For holding the score
