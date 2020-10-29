@@ -85,7 +85,14 @@ function newGame(winningScore) {
   // remove winer class
   elements.players.forEach(pl => pl.classList.remove('player--winner'));
 
+  //   reset all scores
+  resetScore(1, true);
+
+  //   switch player back to one
   switchPlayer(2);
+
+  //   add event listeners back
+  toggleListeners('add');
 }
 
 function displayScore(activePlayer) {
@@ -102,7 +109,14 @@ function resetScore(activePlayer, isNewGame) {
     playerTwoScore = 0;
   }
 
-  isNewGame ? ([playerOneTotalScore, playerTwoTotalScore] = [0, 0]) : null;
+  isNewGame
+    ? ([
+        playerOneTotalScore,
+        playerTwoTotalScore,
+        playerOneScore,
+        playerTwoScore,
+      ] = [0, 0, 0, 0])
+    : null;
 
   //   display scores
   displayScore(activePlayer);
