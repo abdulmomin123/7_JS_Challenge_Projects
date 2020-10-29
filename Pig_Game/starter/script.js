@@ -42,7 +42,7 @@ function rollDice() {
 
   //   if rolls a 1 : (
   if (dice === 1) {
-    resetScores(activePlayer);
+    resetScore(activePlayer);
     switchPlayer(activePlayer);
   }
 
@@ -82,13 +82,11 @@ function displayScore(activePlayer) {
   elements.score2.textContent = playerTwoTotalScore;
 }
 
-function resetScores(activePlayer) {
+function resetScore(activePlayer) {
   if (activePlayer === 1) {
     playerOneScore = 0;
-    playerOneTotalScore = 0;
   } else {
     playerTwoScore = 0;
-    playerTwoTotalScore = 0;
   }
 
   //   display scores
