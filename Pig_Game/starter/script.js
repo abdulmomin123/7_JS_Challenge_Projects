@@ -29,6 +29,8 @@ let playerTwoScore = 0;
 
 let activePlayer = 1;
 
+const winningScore = 10;
+
 // For rolling the dice
 function rollDice() {
   // Create a random number
@@ -61,10 +63,17 @@ function holdScore() {
   resetScore(activePlayer);
 
   //   in case of winning
-  if (activePlayer === 1) {
-    playerOneTotalScore >= 100 ? win() : null;
-  } else if (activePlayer === 2) {
-    playerTwoTotalScore >= 100 ? win() : null;
+  if (
+    playerOneTotalScore >= winningScore ||
+    playerTwoTotalScore >= winningScore
+  ) {
+    if (activePlayer === 1) {
+      playerOneTotalScore >= winningScore ? win() : null;
+    } else if (activePlayer === 2) {
+      playerTwoTotalScore >= winningScore ? win() : null;
+    }
+
+    return;
   }
 
   //   switch players
@@ -107,7 +116,14 @@ function switchPlayer(currentPlayer) {
 }
 
 function win() {
-  //
+  document.querySelector('.player--0').classList.add('.');
+
+  toggleListeners('remove');
+}
+
+function toggleListeners(task) {
+  elements.rollDice[`${task}EventListener`]('click', rollDice);
+  elements.holdScore[`${task}EventListener`]('click', holdScore);
 }
 
 // Event handlers
