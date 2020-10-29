@@ -14,6 +14,9 @@ const elements = {
 
   //   Dice image
   dice: document.querySelector('.dice'),
+
+  //   players
+  players: document.querySelectorAll('.player--0, .player--1'),
 };
 
 // Global scores
