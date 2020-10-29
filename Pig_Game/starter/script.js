@@ -7,10 +7,10 @@ const elements = {
   newGame: document.querySelector('.btn--new'),
 
   //   UI elements
-  score0: document.getElementById('score--0'),
-  current0: document.getElementById('current--0'),
-  score1: document.getElementById('score--1'),
-  current1: document.getElementById('current--1'),
+  score1: document.getElementById('score--0'),
+  current1: document.getElementById('current--0'),
+  score2: document.getElementById('score--1'),
+  current2: document.getElementById('current--1'),
 
   //   Dice image
   dice: document.querySelector('.dice'),
