@@ -32,10 +32,10 @@ function rollDice(activePlayer) {
   // Display the dice
   elements.dice.setAttribute('src', `dice-${dice}.png`);
 
-  //   Update score
+  //   Update current score
   activePlayer === 1 ? (playerOneScore += dice) : (playerTwoScore += dice);
 
-  //   Display Score
+  //   Display current Score
   elements[`current${activePlayer}`].textContent =
     activePlayer === 1 ? playerOneScore : playerTwoScore;
 
