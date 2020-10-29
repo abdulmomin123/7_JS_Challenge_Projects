@@ -68,9 +68,9 @@ function holdScore() {
     playerTwoTotalScore >= winningScore
   ) {
     if (activePlayer === 1) {
-      playerOneTotalScore >= winningScore ? win() : null;
+      playerOneTotalScore >= winningScore ? win(0) : null;
     } else if (activePlayer === 2) {
-      playerTwoTotalScore >= winningScore ? win() : null;
+      playerTwoTotalScore >= winningScore ? win(1) : null;
     }
 
     return;
@@ -115,9 +115,8 @@ function switchPlayer(currentPlayer) {
     : elements.player1.classList.add('player--active');
 }
 
-function win() {
-  document.querySelector('.player--0').classList.add('.');
-
+function win(player) {
+  document.querySelector(`.player--${player}`).classList.add('player--winner');
   toggleListeners('remove');
 }
 
