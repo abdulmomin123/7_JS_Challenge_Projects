@@ -27,7 +27,7 @@ let playerOneTotalScore = 0,
   playerOneScore = 0,
   playerTwoScore = 0,
   activePlayer = 1,
-  winningScore = 10,
+  winningScore = 50,
   isPlaying = true;
 
 // For rolling the dice
