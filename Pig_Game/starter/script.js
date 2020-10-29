@@ -13,9 +13,15 @@ const elements = {
   current1: document.getElementById('current--1'),
 };
 
+// Global scores
+let playerOneScore = 0;
+let playerTwoScore = 0;
+
 // For rolling the dice
 function rollDice() {
-  //
+  const dice = Math.trunc(Math.random() * 6 + 1);
+
+  console.log(dice);
 }
 
 // For holding the score
