@@ -24,3 +24,8 @@ function holdScore() {
 function newGame() {
   //
 }
+
+// Event handlers
+elements.rollDice.addEventListener('click', rollDice);
+elements.holdScore.addEventListener('click', holdScore);
+elements.newGame.addEventListener('click', newGame);
