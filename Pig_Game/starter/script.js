@@ -48,11 +48,11 @@ function holdScore() {
 }
 
 // For a new game
-function newGame() {
+function newGame(winningScore) {
   //
 }
 
 // Event handlers
 elements.rollDice.addEventListener('click', rollDice.bind(null, activePlayer));
 elements.holdScore.addEventListener('click', holdScore);
-elements.newGame.addEventListener('click', newGame);
+elements.newGame.addEventListener('click', newGame.bind(null, 100));
