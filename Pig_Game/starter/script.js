@@ -13,14 +13,17 @@ const elements = {
   current1: document.getElementById('current--1'),
 };
 
+// For rolling the dice
 function rollDice() {
   //
 }
 
+// For holding the score
 function holdScore() {
   //
 }
 
+// For a new game
 function newGame() {
   //
 }
