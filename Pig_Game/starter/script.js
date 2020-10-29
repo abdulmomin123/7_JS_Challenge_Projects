@@ -37,12 +37,11 @@ function rollDice(activePlayer) {
 
   //   if rolls a 1 : (
   if (dice === 1) {
-    //
+    resetScores(activePlayer);
   }
 
   //   Display current Score
-  elements[`current${activePlayer}`].textContent =
-    activePlayer === 1 ? playerOneScore : playerTwoScore;
+  displayScore(activePlayer);
 
   console.log(dice);
 }
@@ -57,8 +56,13 @@ function newGame(winningScore) {
   //
 }
 
-function resetScores(whichPlayer) {
-  if (whichPlayer === 1) {
+function displayScore(activePlayer) {
+  elements[`current${activePlayer}`].textContent =
+    activePlayer === 1 ? playerOneScore : playerTwoScore;
+}
+
+function resetScores(activePlayer) {
+  if (activePlayer === 1) {
     playerOneScore = 0;
     playerOneTotalScore = 0;
   } else {
