@@ -22,10 +22,10 @@ let playerTwoTotalScore = 0;
 let playerOneScore = 0;
 let playerTwoScore = 0;
 
-let activePlayer = 'One';
+let activePlayer = 1;
 
 // For rolling the dice
-function rollDice() {
+function rollDice(activePlayer) {
   // Create a random number
   const dice = Math.trunc(Math.random() * 6 + 1);
 
@@ -33,6 +33,11 @@ function rollDice() {
   elements.dice.setAttribute('src', `dice-${dice}.png`);
 
   //   Update score
+  activePlayer === 1 ? (playerOneScore += dice) : (playerTwoScore += dice);
+
+  //   Display Score
+  elements[`current${activePlayer}`].textContent =
+    activePlayer === 1 ? playerOneScore : playerTwoScore;
 
   console.log(dice);
 }
@@ -48,6 +53,6 @@ function newGame() {
 }
 
 // Event handlers
-elements.rollDice.addEventListener('click', rollDice);
+elements.rollDice.addEventListener('click', rollDice.bind(null, activePlayer));
 elements.holdScore.addEventListener('click', holdScore);
 elements.newGame.addEventListener('click', newGame);
