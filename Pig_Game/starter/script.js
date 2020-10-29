@@ -80,13 +80,10 @@ function resetScores(activePlayer) {
 function switchPlayer(currentPlayer) {
   activePlayer = currentPlayer === 1 ? 2 : 1;
 
-  elements.players.forEach((pl, i, src) => {
-    //   remove class
-    pl.classList.remove('player--active');
-
-    // add class
-    src[currentPlayer - 1].classList.add('player--active');
-  });
+  //   remove class
+  elements.players.forEach((pl, i, src) =>
+    pl.classList.remove('player--active')
+  );
 }
 
 // Event handlers
