@@ -38,6 +38,7 @@ function rollDice(activePlayer) {
   //   if rolls a 1 : (
   if (dice === 1) {
     resetScores(activePlayer);
+    displayScore(activePlayer);
   }
 
   //   Display current Score
