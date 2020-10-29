@@ -17,12 +17,14 @@ const elements = {
 };
 
 // Global scores
+let playerOneTotalScore = 0;
+let playerTwoTotalScore = 0;
 let playerOneScore = 0;
 let playerTwoScore = 0;
 
 // For rolling the dice
 function rollDice() {
-  // Create a random numbe
+  // Create a random number
   const dice = Math.trunc(Math.random() * 6 + 1);
 
   // Display the dice
