@@ -25,7 +25,7 @@ let playerTwoScore = 0;
 let activePlayer = 1;
 
 // For rolling the dice
-function rollDice(activePlayer) {
+function rollDice() {
   // Create a random number
   const dice = Math.trunc(Math.random() * 6 + 1);
 
@@ -39,6 +39,8 @@ function rollDice(activePlayer) {
   if (dice === 1) {
     resetScores(activePlayer);
     displayScore(activePlayer);
+    switchPlayer(activePlayer);
+    return;
   }
 
   //   Display current Score
@@ -72,7 +74,11 @@ function resetScores(activePlayer) {
   }
 }
 
+function switchPlayer(currentPlayer) {
+  activePlayer = currentPlayer === 1 ? 2 : 1;
+}
+
 // Event handlers
-elements.rollDice.addEventListener('click', rollDice.bind(null, activePlayer));
+elements.rollDice.addEventListener('click', rollDice);
 elements.holdScore.addEventListener('click', holdScore);
 elements.newGame.addEventListener('click', newGame.bind(null, 100));
