@@ -16,7 +16,7 @@ const elements = {
   dice: document.querySelector('.dice'),
 
   //   players
-  players: document.querySelectorAll('.player--0, .player--1'),
+  players: document.querySelectorAll('.player'),
   player1: document.querySelector('.player--0'),
   player2: document.querySelector('.player--1'),
 };
@@ -82,6 +82,9 @@ function holdScore() {
 
 // For a new game
 function newGame(winningScore) {
+  // remove winer class
+  elements.players.forEach(pl => pl.classList.remove('player--winner'));
+
   switchPlayer(2);
 }
 
@@ -92,12 +95,14 @@ function displayScore(activePlayer) {
   elements.score2.textContent = playerTwoTotalScore;
 }
 
-function resetScore(activePlayer) {
+function resetScore(activePlayer, isNewGame) {
   if (activePlayer === 1) {
     playerOneScore = 0;
   } else {
     playerTwoScore = 0;
   }
+
+  isNewGame ? ([playerOneTotalScore, playerTwoTotalScore] = [0, 0]) : null;
 
   //   display scores
   displayScore(activePlayer);
@@ -116,7 +121,7 @@ function switchPlayer(currentPlayer) {
 }
 
 function win(player) {
-  document.querySelector(`.player--${player}`).classList.add('player--winner');
+  elements.players[player].classList.add('player--winner');
   toggleListeners('remove');
 }
 
