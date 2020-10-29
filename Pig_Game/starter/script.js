@@ -22,6 +22,8 @@ let playerTwoTotalScore = 0;
 let playerOneScore = 0;
 let playerTwoScore = 0;
 
+let activePlayer = 'One';
+
 // For rolling the dice
 function rollDice() {
   // Create a random number
@@ -29,6 +31,8 @@ function rollDice() {
 
   // Display the dice
   elements.dice.setAttribute('src', `dice-${dice}.png`);
+
+  //   Update score
 
   console.log(dice);
 }
