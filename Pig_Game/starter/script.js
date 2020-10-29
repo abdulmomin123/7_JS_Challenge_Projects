@@ -22,14 +22,12 @@ const elements = {
 };
 
 // Global scores
-let playerOneTotalScore = 0;
-let playerTwoTotalScore = 0;
-let playerOneScore = 0;
-let playerTwoScore = 0;
-
-let activePlayer = 1;
-
-const winningScore = 10;
+let playerOneTotalScore = 0,
+  playerTwoTotalScore = 0,
+  playerOneScore = 0,
+  playerTwoScore = 0,
+  activePlayer = 1,
+  winningScore = 50;
 
 // For rolling the dice
 function rollDice() {
