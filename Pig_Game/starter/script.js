@@ -56,7 +56,22 @@ function rollDice() {
 
 // For holding the score
 function holdScore() {
-  //
+  // increment total score
+  activePlayer === 1
+    ? (playerOneTotalScore += playerOneScore)
+    : (playerTwoTotalScore += playerTwoScore);
+
+  //   reset current score
+  activePlayer === 1 ? (playerOneScore = 0) : (playerTwoScore = 0);
+
+  //   display total score
+  activePlayer === 1
+    ? (elements.score1.textContent = playerOneTotalScore)
+    : (elements.score2.textContent = playerTwoTotalScore);
+  displayScore(activePlayer);
+
+  //   switch players
+  switchPlayer(activePlayer);
 }
 
 // For a new game
@@ -77,6 +92,10 @@ function resetScores(activePlayer) {
     playerTwoScore = 0;
     playerTwoTotalScore = 0;
   }
+
+  //   display scores
+  elements.score1.textContent = playerOneTotalScore;
+  elements.score2.textContent = playerTwoTotalScore;
 }
 
 function switchPlayer(currentPlayer) {
