@@ -27,10 +27,13 @@ let playerOneTotalScore = 0,
   playerOneScore = 0,
   playerTwoScore = 0,
   activePlayer = 1,
-  winningScore = 50;
+  winningScore = 10,
+  isPlaying = true;
 
 // For rolling the dice
 function rollDice() {
+  if (!isPlaying) return;
+
   // Create a random number
   const dice = Math.trunc(Math.random() * 6 + 1);
 
@@ -42,23 +45,25 @@ function rollDice() {
 
   //   if rolls a 1 : (
   if (dice === 1) {
-    resetScore(activePlayer);
+    resetScore();
     switchPlayer(activePlayer);
   }
 
   //   Display current Score
-  displayScore(activePlayer);
+  displayScore();
 }
 
 // For holding the score
 function holdScore() {
+  if (!isPlaying) return;
+
   // increment total score
   activePlayer === 1
     ? (playerOneTotalScore += playerOneScore)
     : (playerTwoTotalScore += playerTwoScore);
 
   //   reset current score display total score
-  resetScore(activePlayer);
+  resetScore();
 
   //   in case of winning
   if (
@@ -80,32 +85,29 @@ function holdScore() {
 
 // For a new game
 function newGame(winningScore) {
+  // Start playing
+  isPlaying = true;
+
   // remove winer class
   elements.players.forEach(pl => pl.classList.remove('player--winner'));
 
   //   reset all scores
-  resetScore(1, true);
+  resetScore(true);
 
   //   switch player back to one
   switchPlayer(2);
-
-  //   add event listeners back
-  toggleListeners('add');
 }
 
-function displayScore(activePlayer) {
-  elements[`current${activePlayer}`].textContent =
-    activePlayer === 1 ? playerOneScore : playerTwoScore;
+function displayScore() {
+  elements.current1.textContent = playerOneScore;
+  elements.current2.textContent = playerTwoScore;
   elements.score1.textContent = playerOneTotalScore;
   elements.score2.textContent = playerTwoTotalScore;
 }
 
-function resetScore(activePlayer, isNewGame) {
-  if (activePlayer === 1) {
-    playerOneScore = 0;
-  } else {
-    playerTwoScore = 0;
-  }
+function resetScore(isNewGame) {
+  playerOneScore = 0;
+  playerTwoScore = 0;
 
   isNewGame
     ? ([
@@ -117,7 +119,7 @@ function resetScore(activePlayer, isNewGame) {
     : null;
 
   //   display scores
-  displayScore(activePlayer);
+  displayScore();
 }
 
 function switchPlayer(currentPlayer) {
@@ -134,12 +136,7 @@ function switchPlayer(currentPlayer) {
 
 function win(player) {
   elements.players[player].classList.add('player--winner');
-  toggleListeners('remove');
-}
-
-function toggleListeners(task) {
-  elements.rollDice[`${task}EventListener`]('click', rollDice);
-  elements.holdScore[`${task}EventListener`]('click', holdScore);
+  isPlaying = false;
 }
 
 // Event handlers
