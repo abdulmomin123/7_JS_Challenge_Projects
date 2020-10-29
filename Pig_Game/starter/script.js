@@ -82,6 +82,8 @@ function newGame(winningScore) {
 function displayScore(activePlayer) {
   elements[`current${activePlayer}`].textContent =
     activePlayer === 1 ? playerOneScore : playerTwoScore;
+  elements.score1.textContent = playerOneTotalScore;
+  elements.score2.textContent = playerTwoTotalScore;
 }
 
 function resetScores(activePlayer) {
@@ -94,8 +96,7 @@ function resetScores(activePlayer) {
   }
 
   //   display scores
-  elements.score1.textContent = playerOneTotalScore;
-  elements.score2.textContent = playerTwoTotalScore;
+  displayScore(activePlayer);
 }
 
 function switchPlayer(currentPlayer) {
