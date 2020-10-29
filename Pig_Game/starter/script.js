@@ -81,18 +81,17 @@ function switchPlayer(currentPlayer) {
   activePlayer = currentPlayer === 1 ? 2 : 1;
 
   //   remove class
-  elements.players.forEach((pl, i, src) => {
-    pl.classList.remove('player--active');
-
-    i === currentPlayer
-      ? src[1].classList.add('player--active')
-      : src[0].classList.add('player--active');
-  });
-
   if (currentPlayer > 1) {
     elements.players[1].classList.remove('player--active');
   } else {
     elements.players[0].classList.remove('player--active');
+  }
+
+  //   add class
+  if (currentPlayer > 1) {
+    elements.players[0].classList.add('player--active');
+  } else {
+    elements.players[1].classList.add('player--active');
   }
 }
 
