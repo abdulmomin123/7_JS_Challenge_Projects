@@ -57,14 +57,15 @@ function holdScore() {
     ? (playerOneTotalScore += playerOneScore)
     : (playerTwoTotalScore += playerTwoScore);
 
-  //   reset current score
-  activePlayer === 1 ? (playerOneScore = 0) : (playerTwoScore = 0);
+  //   reset current score display total score
+  resetScore(activePlayer);
 
-  //   display total score
-  activePlayer === 1
-    ? (elements.score1.textContent = playerOneTotalScore)
-    : (elements.score2.textContent = playerTwoTotalScore);
-  displayScore(activePlayer);
+  //   in case of winning
+  if (activePlayer === 1) {
+    playerOneTotalScore >= 100 ? win() : null;
+  } else if (activePlayer === 2) {
+    playerTwoTotalScore >= 100 ? win() : null;
+  }
 
   //   switch players
   switchPlayer(activePlayer);
@@ -103,6 +104,10 @@ function switchPlayer(currentPlayer) {
   currentPlayer === 1
     ? elements.player2.classList.add('player--active')
     : elements.player1.classList.add('player--active');
+}
+
+function win() {
+  //
 }
 
 // Event handlers
