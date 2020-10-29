@@ -35,6 +35,11 @@ function rollDice(activePlayer) {
   //   Update current score
   activePlayer === 1 ? (playerOneScore += dice) : (playerTwoScore += dice);
 
+  //   if rolls a 1 : (
+  if (dice === 1) {
+    //
+  }
+
   //   Display current Score
   elements[`current${activePlayer}`].textContent =
     activePlayer === 1 ? playerOneScore : playerTwoScore;
@@ -50,6 +55,16 @@ function holdScore() {
 // For a new game
 function newGame(winningScore) {
   //
+}
+
+function resetScores(whichPlayer) {
+  if (whichPlayer === 1) {
+    playerOneScore = 0;
+    playerOneTotalScore = 0;
+  } else {
+    playerTwoScore = 0;
+    playerTwoTotalScore = 0;
+  }
 }
 
 // Event handlers
