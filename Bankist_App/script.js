@@ -30,7 +30,8 @@ const elements = {
 
 // Data
 class Account {
-  constructor(owner, pin) {
+  constructor(username, owner, pin) {
+    this.username = username;
     this.owner = owner;
     this.pin = pin;
 
@@ -77,7 +78,7 @@ class Account {
   }
 }
 
-const accounts = [new Account('ffff', 1111)];
+const accounts = [new Account('ffff', 'Abdul Momin', 1111)];
 
 let loggedInUser;
 
@@ -138,7 +139,7 @@ const authUser = e => {
 
   accounts.forEach((acc, i) => {
     if (
-      elements.inputLoginUsername.value === acc.owner &&
+      elements.inputLoginUsername.value === acc.username &&
       parseInt(elements.inputLoginPin.value) === acc.pin
     ) {
       loggedInUser = accounts[i];
