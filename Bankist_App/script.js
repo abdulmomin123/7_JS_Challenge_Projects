@@ -29,8 +29,6 @@ const elements = {
 };
 
 // Data
-const accounts = [new Account('demo', 1111)];
-
 class Account {
   constructor(owner, pin) {
     this.owner = owner;
@@ -78,6 +76,27 @@ class Account {
     //
   }
 }
+
+const accounts = [new Account('ffff', 1111)];
+
+// Authentication
+const authUser = e => {
+  e.preventDefault();
+
+  const userName = elements.inputLoginUsername.value;
+  const pin = parseInt(elements.inputLoginPin.value);
+
+  accounts.forEach(acc => {
+    if (userName === acc.owner && pin === acc.pin) {
+      elements.containerApp.classList.toggle('logged-in');
+    }
+  });
+
+  console.log(userName, pin);
+};
+
+// Event Handlers
+elements.btnLogin.addEventListener('click', authUser);
 
 const account1 = {
   owner: 'Jonas Schmedtmann',
