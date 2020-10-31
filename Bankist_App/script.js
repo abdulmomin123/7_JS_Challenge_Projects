@@ -1,6 +1,17 @@
 'use strict';
 
 // Data
+const accounts = [];
+
+class Account {
+  constructor(owner, movements = [1000], interestRate, pin) {
+    this.owner = owner;
+    this.pin = pin;
+    this.movements = movements;
+    this.interestRate = interestRate;
+  }
+}
+
 const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
@@ -29,7 +40,7 @@ const account4 = {
   pin: 4444,
 };
 
-const accounts = [account1, account2, account3, account4];
+// const accounts = [account1, account2, account3, account4];
 
 // Elements
 const elements = {
