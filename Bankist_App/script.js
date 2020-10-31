@@ -83,7 +83,9 @@ let loggedInUser;
 
 // Authentication
 const renderMov = acc => {
-  //
+  acc.movements.forEach((mov, i) => {
+    //
+  });
 };
 
 const updateUI = () => {
@@ -96,6 +98,7 @@ const updateUI = () => {
   elements.labelBalance.textContent = `${loggedInUser.getCurrentBal()} ${
     loggedInUser.currency
   }`;
+  renderMov(loggedInUser);
 
   elements.containerApp.classList.toggle('logged-in');
 };
