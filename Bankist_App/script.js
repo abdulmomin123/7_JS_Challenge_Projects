@@ -10,6 +10,13 @@ class Account {
 
     // Static Properties
     this.movements = [1000];
+    this.currentBalance = this.movements.reduce((acc, cur) => acc + cur);
+    this.totalIn = this.movementsthis.movements
+      .filter(mov => mov > 0)
+      .reduce((acc, cur) => acc + cur);
+    this.totalOut = this.movements
+      .filter(mov => mov < 0)
+      .reduce((acc, cur) => acc + cur);
     this.interestRate = 1.2;
   }
 }
