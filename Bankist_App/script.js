@@ -112,7 +112,9 @@ const renderMov = acc => {
 const updateUI = () => {
   const date = new Date();
 
-  elements.labelWelcome.textContent = `Good Evening, ${loggedInUser.owner}!`;
+  elements.labelWelcome.textContent = `Good Evening, ${
+    loggedInUser.owner.split(' ')[0]
+  }!`;
   elements.labelDate.textContent = `${date.getDate()}/${
     date.getMonth() + 1
   }/${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`;
