@@ -83,6 +83,16 @@ let loggedInUser;
 
 // Authentication
 const updateUI = () => {
+  const date = new Date();
+
+  elements.labelWelcome.textContent = `Good Evening, ${loggedInUser.owner}!`;
+  elements.labelDate.textContent = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`;
+  elements.labelBalance.textContent = `${loggedInUser.getCurrentBal()} ${
+    loggedInUser.currency
+  }`;
+
   elements.containerApp.classList.toggle('logged-in');
 };
 
