@@ -82,6 +82,10 @@ const accounts = [new Account('ffff', 1111)];
 let loggedInUser;
 
 // Authentication
+const renderMov = acc => {
+  //
+};
+
 const updateUI = () => {
   const date = new Date();
 
