@@ -19,6 +19,22 @@ class Account {
       .reduce((acc, cur) => acc + cur);
     this.interestRate = 1.2;
   }
+
+  transferMoney(amount) {
+    //
+  }
+
+  requestLoan(amount) {
+    //
+  }
+
+  closeAccount() {
+    //
+  }
+
+  logout() {
+    //
+  }
 }
 
 const account1 = {
