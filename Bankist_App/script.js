@@ -88,8 +88,10 @@ const authUser = e => {
   const userName = elements.inputLoginUsername.value;
   const pin = parseInt(elements.inputLoginPin.value);
 
-  accounts.forEach(acc => {
+  accounts.forEach((acc, i) => {
     if (userName === acc.owner && pin === acc.pin) {
+      loggedInUser = accounts[i];
+
       elements.containerApp.classList.toggle('logged-in');
     }
   });
