@@ -9,9 +9,9 @@ class Account {
     this.pin = pin;
 
     // Static Properties
-    this.movements = [1000];
+    this.movements = [1000, 2000, -100, -200];
     this.currentBalance = this.movements.reduce((acc, cur) => acc + cur);
-    this.totalIn = this.movementsthis.movements
+    this.totalIn = this.movements
       .filter(mov => mov > 0)
       .reduce((acc, cur) => acc + cur);
     this.totalOut = this.movements
