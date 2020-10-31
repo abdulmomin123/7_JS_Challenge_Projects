@@ -79,6 +79,8 @@ class Account {
 
 const accounts = [new Account('ffff', 1111)];
 
+let loggedInUser;
+
 // Authentication
 const authUser = e => {
   e.preventDefault();
