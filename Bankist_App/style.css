@@ -17,6 +17,8 @@ body {
   padding: 2rem;
 }
 
+/* JS Classes */
+
 nav {
   display: flex;
   justify-content: space-between;
