@@ -91,8 +91,6 @@ const authUser = e => {
       elements.containerApp.classList.toggle('logged-in');
     }
   });
-
-  console.log(userName, pin);
 };
 
 // Event Handlers
