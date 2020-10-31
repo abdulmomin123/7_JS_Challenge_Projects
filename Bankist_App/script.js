@@ -1,6 +1,6 @@
 'use strict';
 
-// Data
+// Dat
 const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
