@@ -82,8 +82,12 @@ const accounts = [new Account('ffff', 1111)];
 let loggedInUser;
 
 // Authentication
-const login = () => {
+const updateUI = () => {
   elements.containerApp.classList.toggle('logged-in');
+};
+
+const login = () => {
+  updateUI();
 };
 
 const authUser = e => {
