@@ -119,6 +119,12 @@ const updateUI = () => {
     loggedInUser.currency
   }`;
   renderMov(loggedInUser);
+  elements.labelSumIn.textContent = `${loggedInUser.getTotalIn()} ${
+    loggedInUser.currency
+  }`;
+  elements.labelSumOut.textContent = `${loggedInUser.getTotalOut()} ${
+    loggedInUser.currency
+  }`;
 
   elements.containerApp.classList.toggle('logged-in');
 };
