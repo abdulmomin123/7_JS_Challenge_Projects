@@ -38,30 +38,27 @@ class Account {
 
     // Static Properties
     this.movements = [1000, 2000, -100, -200];
-    this.currentBalance = this.movements.reduce((acc, cur) => acc + cur);
-    this.totalIn = this.movements
-      .filter(mov => mov > 0)
-      .reduce((acc, cur) => acc + cur);
-    this.totalOut = this.movements
-      .filter(mov => mov < 0)
-      .reduce((acc, cur) => acc + cur);
     this.interestRate = 1.2;
   }
 
   getCurrentBal() {
-    //
+    return this.movements.reduce((acc, cur) => acc + cur);
   }
 
   getTotalIn() {
-    //
+    return this.movements
+      .filter(mov => mov > 0)
+      .reduce((acc, cur) => acc + cur);
   }
 
   getTotalOut() {
-    //
+    return this.movements
+      .filter(mov => mov < 0)
+      .reduce((acc, cur) => acc + cur);
   }
 
   getTotalInterest() {
-    //
+    return;
   }
 
   transferMoney(amount) {
