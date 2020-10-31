@@ -89,12 +89,16 @@ const login = () => {
 const authUser = e => {
   e.preventDefault();
 
-  const userName = elements.inputLoginUsername.value;
-  const pin = parseInt(elements.inputLoginPin.value);
-
   accounts.forEach((acc, i) => {
-    if (userName === acc.owner && pin === acc.pin) {
+    if (
+      elements.inputLoginUsername.value === acc.owner &&
+      parseInt(elements.inputLoginPin.value) === acc.pin
+    ) {
       loggedInUser = accounts[i];
+      [elements.inputLoginUsername.value, elements.inputLoginPin.value] = [
+        '',
+        '',
+      ];
       login();
     }
   });
