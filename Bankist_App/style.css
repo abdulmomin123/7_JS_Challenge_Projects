@@ -18,6 +18,15 @@ body {
 }
 
 /* JS Classes */
+.logged-in {
+  visibility: visible;
+  opacity: 1;
+}
+
+.logged-out {
+  visibility: hidden;
+  opacity: 0;
+}
 
 nav {
   display: flex;
@@ -90,8 +99,9 @@ nav {
   gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 1s, visibility 1s;
 }
 
 .balance {
