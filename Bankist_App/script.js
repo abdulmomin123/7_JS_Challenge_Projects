@@ -82,15 +82,23 @@ const accounts = [new Account('ffff', 1111)];
 let loggedInUser;
 
 // Authentication
+const renderEl = arr => {
+  //
+};
+
 const renderMov = acc => {
   const allMovements = acc.movements.map((mov, i) => {
+    const movType = mov > 0 ? 'deposit' : 'withdrawal';
+
     const markup = `
     <div class="movements__row">
-      <div class="movements__type movements__type--deposit">8 deposit</div>
+      <div class="movements__type movements__type--${movType}">${i} ${movType}</div>
       <div class="movements__date">12/03/2020</div>
-      <div class="movements__value">1300,00&nbsp;€</div>
+      <div class="movements__value">${mov}&nbsp;${acc.currency}</div>
     </div>
     `;
+
+    return markup;
   });
 };
 
