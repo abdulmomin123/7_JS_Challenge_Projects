@@ -122,7 +122,7 @@ const updateUI = () => {
   elements.labelSumIn.textContent = `${loggedInUser.getTotalIn()} ${
     loggedInUser.currency
   }`;
-  elements.labelSumOut.textContent = `${loggedInUser.getTotalOut()} ${
+  elements.labelSumOut.textContent = `${Math.abs(loggedInUser.getTotalOut())} ${
     loggedInUser.currency
   }`;
 
