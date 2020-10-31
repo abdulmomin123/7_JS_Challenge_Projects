@@ -4,11 +4,13 @@
 const accounts = [];
 
 class Account {
-  constructor(owner, movements = [1000], interestRate, pin) {
+  constructor(owner, pin) {
     this.owner = owner;
     this.pin = pin;
-    this.movements = movements;
-    this.interestRate = interestRate;
+
+    // Static Properties
+    this.movements = [1000];
+    this.interestRate = 1.2;
   }
 }
 
