@@ -82,6 +82,11 @@ const accounts = [new Account('ffff', 1111)];
 let loggedInUser;
 
 // Authentication
+
+const login = () => {
+  elements.containerApp.classList.toggle('logged-in');
+};
+
 const authUser = e => {
   e.preventDefault();
 
@@ -91,8 +96,7 @@ const authUser = e => {
   accounts.forEach((acc, i) => {
     if (userName === acc.owner && pin === acc.pin) {
       loggedInUser = accounts[i];
-
-      elements.containerApp.classList.toggle('logged-in');
+      login();
     }
   });
 };
