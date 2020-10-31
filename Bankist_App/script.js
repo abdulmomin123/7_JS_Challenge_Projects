@@ -83,8 +83,14 @@ let loggedInUser;
 
 // Authentication
 const renderMov = acc => {
-  acc.movements.forEach((mov, i) => {
-    //
+  const allMovements = acc.movements.map((mov, i) => {
+    const markup = `
+    <div class="movements__row">
+      <div class="movements__type movements__type--deposit">8 deposit</div>
+      <div class="movements__date">12/03/2020</div>
+      <div class="movements__value">1300,00&nbsp;€</div>
+    </div>
+    `;
   });
 };
 
