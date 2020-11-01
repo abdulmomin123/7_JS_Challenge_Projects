@@ -82,10 +82,6 @@ class Account {
     //
   }
 
-  closeAccount() {
-    //
-  }
-
   login() {
     updateUI();
   }
