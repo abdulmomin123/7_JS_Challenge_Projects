@@ -73,17 +73,11 @@ class Account {
       this.movements.push(-amount);
       receiver.movements.push(amount);
       updateUI();
-
-      console.log(receiver, amount, transferTo);
     }
   }
 
   requestLoan(amount) {
     //
-  }
-
-  login() {
-    updateUI();
   }
 
   logout() {
@@ -168,7 +162,7 @@ const authUser = e => {
       parseInt(elements.inputLoginPin.value) === acc.pin
   );
 
-  if (loggedInUser) loggedInUser.login();
+  if (loggedInUser) updateUI();
 };
 
 const transferMoney = e => {
@@ -183,6 +177,19 @@ const transferMoney = e => {
 
 const requestLoan = e => {
   e.preventDefault();
+
+  const reqAmount = parseFloat(elements.inputLoanAmount.value);
+
+  if (
+    reqAmount > 0 &&
+    loggedInUser.movements.some(mov => reqAmount <= (mov * 10) / 100)
+  )
+    setTimeout(() => {
+      loggedInUser.movements.push(reqAmount);
+      updateUI();
+    }, 2000);
+
+  elements.inputLoanAmount.value = '';
 };
 
 const closeAccount = e => {
