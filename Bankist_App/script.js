@@ -154,7 +154,7 @@ const updateUI = () => {
     loggedInUser.currency
   }`;
 
-  elements.containerApp.classList.toggle('logged-in');
+  elements.containerApp.classList.add('logged-in');
 };
 
 const authUser = e => {
