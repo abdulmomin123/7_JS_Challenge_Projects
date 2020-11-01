@@ -153,10 +153,8 @@ const authUser = e => {
       parseInt(elements.inputLoginPin.value) === acc.pin
     ) {
       loggedInUser = accounts[i];
-      [elements.inputLoginUsername.value, elements.inputLoginPin.value] = [
-        '',
-        '',
-      ];
+      elements.inputLoginUsername.value = elements.inputLoginPin.value = '';
+      elements.inputLoginPin.blur();
       login();
     }
   });
