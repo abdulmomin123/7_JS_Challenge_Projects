@@ -61,7 +61,7 @@ class Account {
     return ((this.getTotalIn() * this.interestRate) / 100).toFixed(2);
   }
 
-  transferMoney(amount) {
+  transferMoney(amount, transferTo) {
     //
   }
 
@@ -160,11 +160,20 @@ const authUser = e => {
   });
 };
 
+const transferMoney = () => {
+  const [amount, transferTo] = [
+    elements.inputTransferAmount.value,
+    elements.inputTransferTo.value,
+  ];
+  loggedInUser.transferMoney(amount, transferTo);
+};
+
 // Event Handlers
 // Login
 elements.btnLogin.addEventListener('click', authUser);
 
 // Transfer money
+elements.btnTransfer.addEventListener('click', transferMoney);
 
 // const account1 = {
 //   owner: 'Jonas Schmedtmann',
