@@ -181,6 +181,10 @@ const transferMoney = e => {
   loggedInUser.transferMoney(amount, transferTo);
 };
 
+const requestLoan = e => {
+  e.preventDefault();
+};
+
 const closeAccount = e => {
   e.preventDefault();
 
@@ -208,6 +212,9 @@ elements.btnLogin.addEventListener('click', authUser);
 
 // Transfer money
 elements.btnTransfer.addEventListener('click', transferMoney);
+
+// Request Loan
+elements.btnLoan.addEventListener('click', requestLoan);
 
 // Close account
 elements.btnClose.addEventListener('click', closeAccount);
