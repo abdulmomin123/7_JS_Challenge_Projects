@@ -62,7 +62,7 @@ class Account {
   }
 
   transferMoney(amount, transferTo) {
-    //
+    console.log(amount, transferTo);
   }
 
   requestLoan(amount) {
@@ -160,7 +160,9 @@ const authUser = e => {
   });
 };
 
-const transferMoney = () => {
+const transferMoney = e => {
+  e.preventDefault();
+
   const [amount, transferTo] = [
     elements.inputTransferAmount.value,
     elements.inputTransferTo.value,
