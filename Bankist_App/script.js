@@ -175,9 +175,11 @@ const updateUI = () => {
   elements.labelWelcome.textContent = `Good Evening, ${
     loggedInUser.owner.split(' ')[0]
   }!`;
-  elements.labelDate.textContent = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`;
+  elements.labelDate.textContent =
+    `${date.getDate()}`.padStart(2, 0) +
+    `/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`;
   elements.labelBalance.textContent = `${loggedInUser.getCurrentBal()} ${
     loggedInUser.currency
   }`;
