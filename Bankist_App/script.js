@@ -131,7 +131,8 @@ const renderMov = acc => {
 const updateUI = () => {
   const date = new Date();
 
-  elements.inputLoginUsername.value = elements.inputLoginPin.value = '';
+  elements.inputLoginUsername.value = elements.inputLoginPin.value = elements.inputTransferTo.value = elements.inputTransferAmount.value =
+    '';
   elements.inputLoginPin.blur();
   elements.labelWelcome.textContent = `Good Evening, ${
     loggedInUser.owner.split(' ')[0]
