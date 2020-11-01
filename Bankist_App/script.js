@@ -185,12 +185,25 @@ const transferMoney = e => {
   loggedInUser.transferMoney(amount, transferTo);
 };
 
+const closeAccount = e => {
+  e.preventDefault();
+
+  const toClose = accounts.findIndex(
+    acc => loggedInUser.username === acc.username
+  );
+
+  console.log(toClose);
+};
+
 // Event Handlers
 // Login
 elements.btnLogin.addEventListener('click', authUser);
 
 // Transfer money
 elements.btnTransfer.addEventListener('click', transferMoney);
+
+// Close account
+elements.btnClose.addEventListener('click', closeAccount);
 
 // const account1 = {
 //   owner: 'Jonas Schmedtmann',
