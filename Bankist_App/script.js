@@ -75,6 +75,10 @@ class Account {
     //
   }
 
+  login() {
+    updateUI();
+  }
+
   logout() {
     //
   }
@@ -142,24 +146,16 @@ const updateUI = () => {
   elements.containerApp.classList.toggle('logged-in');
 };
 
-const login = () => {
-  updateUI();
-};
-
 const authUser = e => {
   e.preventDefault();
 
-  accounts.forEach((acc, i) => {
-    if (
+  loggedInUser = accounts.find(
+    acc =>
       elements.inputLoginUsername.value === acc.username &&
       parseInt(elements.inputLoginPin.value) === acc.pin
-    ) {
-      loggedInUser = accounts[i];
-      elements.inputLoginUsername.value = elements.inputLoginPin.value = '';
-      elements.inputLoginPin.blur();
-      login();
-    }
-  });
+  );
+
+  if (loggedInUser) loggedInUser.login();
 };
 
 const transferMoney = e => {
