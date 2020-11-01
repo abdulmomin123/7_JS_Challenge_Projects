@@ -64,7 +64,10 @@ class Account {
   transferMoney(amount, transferTo) {
     const receiver = accounts.find(acc => acc.username === transferTo);
 
-    if (receiver) console.log(receiver, amount, transferTo);
+    if (receiver) {
+      this.movements.push(-amount);
+      console.log(receiver, amount, transferTo);
+    }
   }
 
   requestLoan(amount) {
