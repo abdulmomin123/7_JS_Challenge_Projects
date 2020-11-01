@@ -188,11 +188,21 @@ const transferMoney = e => {
 const closeAccount = e => {
   e.preventDefault();
 
+  const [confirmUser, confirmPin] = [
+    elements.inputCloseUsername.value,
+    parseInt(elements.inputClosePin.value),
+  ];
   const toClose = accounts.findIndex(
     acc => loggedInUser.username === acc.username
   );
 
-  console.log(toClose);
+  if (
+    confirmUser === loggedInUser.username &&
+    confirmPin === loggedInUser.pin
+  ) {
+    accounts.splice(toClose, 1);
+    console.log(accounts);
+  }
 };
 
 // Event Handlers
