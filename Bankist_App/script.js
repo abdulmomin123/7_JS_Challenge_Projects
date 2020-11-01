@@ -64,8 +64,9 @@ class Account {
   transferMoney(amount, transferTo) {
     const receiver = accounts.find(acc => acc.username === transferTo);
 
-    if (receiver) {
+    if (receiver && amount <= this.getCurrentBal()) {
       this.movements.push(-amount);
+      receiver.movements.push(amount);
       updateUI();
 
       console.log(receiver, amount, transferTo);
