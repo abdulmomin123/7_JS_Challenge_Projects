@@ -101,8 +101,12 @@ const renderEl = arr => {
   );
 };
 
-const renderMov = acc => {
-  const allMovements = acc.movements.map((mov, i) => {
+const renderMov = (acc, isSorted = false) => {
+  const movArr = isSorted
+    ? [...acc.movements].sort((a, b) => (a > b ? 1 : -1))
+    : acc.movements;
+
+  const allMovements = movArr.map((mov, i) => {
     const movType = mov > 0 ? 'deposit' : 'withdrawal';
 
     const markup = `
@@ -136,7 +140,7 @@ const updateUI = () => {
   elements.labelBalance.textContent = `${loggedInUser.getCurrentBal()} ${
     loggedInUser.currency
   }`;
-  renderMov(loggedInUser);
+  renderMov(loggedInUser, false);
   elements.labelSumIn.textContent = `${loggedInUser.getTotalIn()} ${
     loggedInUser.currency
   }`;
@@ -211,16 +215,11 @@ const closeAccount = e => {
 };
 
 const sortMovements = () => {
-  if (!isSorted) {
-    const loggedUser = { ...loggedInUser };
-    loggedUser.movements = [...loggedUser.movements];
-
-    loggedUser.movements.sort((a, b) => (a > b ? 1 : -1));
-    renderMov(loggedUser);
-
+  if (isSorted) {
+    renderMov(loggedInUser);
     isSorted = !isSorted;
   } else {
-    renderMov(loggedInUser);
+    renderMov(loggedInUser, true);
     isSorted = !isSorted;
   }
 };
