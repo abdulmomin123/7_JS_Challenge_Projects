@@ -128,6 +128,9 @@ const updateUI = () => {
   elements.labelSumOut.textContent = `${Math.abs(loggedInUser.getTotalOut())} ${
     loggedInUser.currency
   }`;
+  elements.labelSumInterest.textContent = `${loggedInUser.getTotalInterest()} ${
+    loggedInUser.currency
+  }`;
 
   elements.containerApp.classList.toggle('logged-in');
 };
