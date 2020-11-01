@@ -66,6 +66,8 @@ class Account {
 
     if (receiver) {
       this.movements.push(-amount);
+      updateUI();
+
       console.log(receiver, amount, transferTo);
     }
   }
@@ -98,6 +100,9 @@ let loggedInUser;
 
 // Authentication
 const renderEl = arr => {
+  // Clear movements before inserting
+  elements.containerMovements.innerHTML = '';
+
   arr.forEach(el =>
     elements.containerMovements.insertAdjacentHTML('afterbegin', el)
   );
