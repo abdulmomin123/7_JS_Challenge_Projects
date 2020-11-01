@@ -164,7 +164,7 @@ const transferMoney = e => {
   e.preventDefault();
 
   const [amount, transferTo] = [
-    elements.inputTransferAmount.value,
+    parseFloat(elements.inputTransferAmount.value),
     elements.inputTransferTo.value,
   ];
   loggedInUser.transferMoney(amount, transferTo);
