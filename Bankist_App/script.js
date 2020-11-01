@@ -76,10 +76,6 @@ class Account {
     }
   }
 
-  requestLoan(amount) {
-    //
-  }
-
   logout() {
     //
   }
