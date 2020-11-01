@@ -89,6 +89,7 @@ const accounts = [
 accounts[1].movements.push(5000, 3400, -150, -790, -3210, -1000, 8500, -30);
 
 let loggedInUser;
+let isSorted = false;
 
 // Authentication
 const renderEl = arr => {
@@ -210,12 +211,18 @@ const closeAccount = e => {
 };
 
 const sortMovements = () => {
-  loggedInUser.movements = loggedInUser.movements.sort((a, b) =>
-    a > b ? 1 : -1
-  );
-  renderMov(loggedInUser);
+  if (!isSorted) {
+    const loggedUser = { ...loggedInUser };
+    loggedUser.movements = [...loggedUser.movements];
 
-  console.log(loggedInUser.movements);
+    loggedUser.movements.sort((a, b) => (a > b ? 1 : -1));
+    renderMov(loggedUser);
+
+    isSorted = !isSorted;
+  } else {
+    renderMov(loggedInUser);
+    isSorted = !isSorted;
+  }
 };
 
 // Event Handlers
