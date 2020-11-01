@@ -161,7 +161,10 @@ const authUser = e => {
 };
 
 // Event Handlers
+// Login
 elements.btnLogin.addEventListener('click', authUser);
+
+// Transfer money
 
 // const account1 = {
 //   owner: 'Jonas Schmedtmann',
