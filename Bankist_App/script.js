@@ -37,7 +37,7 @@ class Account {
 
     // Static Properties
     this.movements = [1000, 2000, -100, -200];
-    this.interestRate = 1.2;
+    this.interestRate = 1.333;
     this.currency = '$';
   }
 
@@ -58,7 +58,7 @@ class Account {
   }
 
   getTotalInterest() {
-    return (this.getTotalIn() * this.interestRate) / 100;
+    return ((this.getTotalIn() * this.interestRate) / 100).toFixed(2);
   }
 
   transferMoney(amount) {
