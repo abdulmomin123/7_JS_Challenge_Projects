@@ -210,9 +210,12 @@ const closeAccount = e => {
 };
 
 const sortMovements = () => {
-  const sortedMov = loggedInUser.movements.sort((a, b) => (a < b ? 1 : -1));
+  loggedInUser.movements = loggedInUser.movements.sort((a, b) =>
+    a > b ? 1 : -1
+  );
+  renderMov(loggedInUser);
 
-  console.log(sortedMov);
+  console.log(loggedInUser.movements);
 };
 
 // Event Handlers
