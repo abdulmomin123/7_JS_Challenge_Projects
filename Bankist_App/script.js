@@ -201,7 +201,7 @@ const closeAccount = e => {
     confirmPin === loggedInUser.pin
   ) {
     accounts.splice(toClose, 1);
-    console.log(accounts);
+    elements.containerApp.classList.remove('logged-in');
   }
 };
 
