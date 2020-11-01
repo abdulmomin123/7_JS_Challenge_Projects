@@ -101,8 +101,8 @@ const renderEl = arr => {
   );
 };
 
-const renderMov = (acc, isSorted = false) => {
-  const movArr = isSorted
+const renderMov = (acc, sorted = false) => {
+  const movArr = sorted
     ? [...acc.movements].sort((a, b) => (a > b ? 1 : -1))
     : acc.movements;
 
@@ -123,6 +123,7 @@ const renderMov = (acc, isSorted = false) => {
   });
 
   renderEl(allMovements);
+  isSorted = !isSorted;
 };
 
 const updateUI = () => {
@@ -215,13 +216,7 @@ const closeAccount = e => {
 };
 
 const sortMovements = () => {
-  if (isSorted) {
-    renderMov(loggedInUser);
-    isSorted = !isSorted;
-  } else {
-    renderMov(loggedInUser, true);
-    isSorted = !isSorted;
-  }
+  renderMov(loggedInUser, isSorted);
 };
 
 // Event Handlers
