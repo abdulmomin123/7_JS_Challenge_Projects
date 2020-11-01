@@ -58,7 +58,7 @@ class Account {
   }
 
   getTotalInterest() {
-    return this.getTotalIn() * this.interestRate;
+    return (this.getTotalIn() * this.interestRate) / 100;
   }
 
   transferMoney(amount) {
