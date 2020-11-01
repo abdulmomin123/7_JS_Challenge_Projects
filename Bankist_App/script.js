@@ -209,6 +209,10 @@ const closeAccount = e => {
   }
 };
 
+const sortMovements = () => {
+  //
+};
+
 // Event Handlers
 // Login
 elements.btnLogin.addEventListener('click', authUser);
@@ -221,3 +225,6 @@ elements.btnLoan.addEventListener('click', requestLoan);
 
 // Close account
 elements.btnClose.addEventListener('click', closeAccount);
+
+// Sort Movements
+elements.btnSort.addEventListener('click', sortMovements);
