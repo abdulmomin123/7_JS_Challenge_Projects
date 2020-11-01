@@ -78,7 +78,10 @@ class Account {
   }
 }
 
-const accounts = [new Account('ffff', 'Abdul Momin', 1111)];
+const accounts = [
+  new Account('ffff', 'Abdul Momin', 1111),
+  new Account('gggg', 'Jonas S.', 2222),
+];
 
 let loggedInUser;
 
