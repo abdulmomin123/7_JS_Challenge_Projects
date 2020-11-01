@@ -178,7 +178,7 @@ const requestLoan = e => {
 
   if (
     reqAmount > 0 &&
-    loggedInUser.movements.some(mov => reqAmount <= (mov * 10) / 100)
+    loggedInUser.movements.some(mov => mov >= reqAmount * 0.1)
   )
     setTimeout(() => {
       loggedInUser.movements.push(reqAmount);
