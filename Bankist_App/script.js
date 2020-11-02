@@ -220,7 +220,7 @@ const scheduleLogout = () => {
   setTimeout(() => {
     elements.labelWelcome.textContent = `Log in to get started`;
     elements.containerApp.classList.remove('logged-in');
-  }, 100000);
+  }, 600000);
 };
 
 const authUser = e => {
