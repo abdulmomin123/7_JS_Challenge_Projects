@@ -36,7 +36,6 @@ class Account {
     this.pin = pin;
 
     // Static Properties
-    this.movements = [1000, 2000, -100, -200];
     this.interestRate = 1.2;
     this.currency = '$';
   }
