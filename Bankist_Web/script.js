@@ -2,11 +2,25 @@
 
 // Modal window
 const elements = {
+  openingElements: document.querySelectorAll('.modal, .overlay'),
+  closingElements: document.querySelectorAll('.close-modal, .overlay'),
+
   modal: document.querySelector('.modal'),
   overlay: document.querySelector('.overlay'),
   btnCloseModal: document.querySelector('.btn--close-modal'),
   btnsOpenModal: document.querySelectorAll('.btn--show-modal'),
 };
+
+const openModal = () => {
+  openingElements.forEach(el => el.classList.remove('hidden'));
+};
+
+const closeModal = () => {
+  openingElements.forEach(el => el.classList.add('hidden'));
+};
+
+buttons.forEach(btn => btn.addEventListener('click', openModal));
+closingElements.forEach(el => el.addEventListener('click', closeModal));
 
 // const openModal = function () {
 //   modal.classList.remove('hidden');
