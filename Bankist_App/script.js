@@ -218,13 +218,16 @@ const updateUI = () => {
 
 const scheduleLogout = timeTillLogOut => {
   let totalTime = timeTillLogOut * 60;
-  let minute = totalTime / 60;
-  let seconds = totalTime / 60;
+  let minute = Math.floor(totalTime / 60);
+  let seconds = totalTime % 60;
 
   // Display timer
   const countDown = setInterval(() => {
-    elements.labelTimer.textContent = 'hi';
+    elements.labelTimer.textContent = `${minute}:${seconds}`;
     console.log(minute);
+    totalTime--;
+    minute = Math.floor(totalTime / 60);
+    seconds = totalTime % 60;
     // clearInterval(countDown);
   }, 1000);
 
