@@ -216,16 +216,25 @@ const updateUI = () => {
   elements.containerApp.classList.add('logged-in');
 };
 
+const scheduleLogout = () => {
+  //
+};
+
 const authUser = e => {
   e.preventDefault();
 
+  // Find the user
   loggedInUser = accounts.find(
     acc =>
       elements.inputLoginUsername.value === acc.username &&
       parseInt(elements.inputLoginPin.value) === acc.pin
   );
 
+  // Log the user in
   if (loggedInUser) updateUI();
+
+  // Schedule logout
+  scheduleLogout();
 };
 
 const transferMoney = e => {
