@@ -176,10 +176,13 @@ const renderMov = (acc, sorted = false) => {
       i + 1
     } ${movType}</div>
       <div class="movements__date">${dateString}</div>
-      <div class="movements__value">${new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: acc.currency,
-      }).format(mov)}</div>
+      <div class="movements__value">${new Intl.NumberFormat(
+        loggedInUser.locale,
+        {
+          style: 'currency',
+          currency: acc.currency,
+        }
+      ).format(mov)}</div>
     </div>
     `;
 
@@ -200,9 +203,13 @@ const updateUI = () => {
     loggedInUser.owner.split(' ')[0]
   }!`;
   elements.labelDate.textContent = today;
-  elements.labelBalance.textContent = `${loggedInUser.getCurrentBal()} ${
-    loggedInUser.currency
-  }`;
+  elements.labelBalance.textContent = `${new Intl.NumberFormat(
+    loggedInUser.locale,
+    {
+      style: 'currency',
+      currency: loggedInUser.currency,
+    }
+  ).format(loggedInUser.getCurrentBal())}`;
   renderMov(loggedInUser, false);
   elements.labelSumIn.textContent = `${loggedInUser.getTotalIn()} ${
     loggedInUser.currency
