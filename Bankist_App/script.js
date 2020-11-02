@@ -41,6 +41,10 @@ class Account {
     this.currency = '$';
   }
 
+  setMovements(movArr) {
+    this.movements = movArr;
+  }
+
   getCurrentBal() {
     return this.movements.reduce((acc, cur) => acc + cur);
   }
