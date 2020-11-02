@@ -105,8 +105,8 @@ const account2 = {
 };
 
 const accounts = [
-  new Account('ffff', 'Abdul Momin', 1111, 'EUR', 'pt-PT'),
-  new Account('gggg', 'Jonas S.', 2222, 'USD', 'en-US'),
+  new Account('ffff', 'Abdul Momin', 1111, 'EUR', navigator.language),
+  new Account('gggg', 'Jonas S.', 2222, 'USD', navigator.language),
 ];
 
 accounts[0].setMovements(
@@ -194,7 +194,14 @@ const renderMov = (acc, sorted = false) => {
 };
 
 const updateUI = () => {
-  const today = new Intl.DateTimeFormat(loggedInUser.locale).format(new Date());
+  const today = new Intl.DateTimeFormat(loggedInUser.locale, {
+    hour: 'numeric',
+    minute: 'numeric',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    weekday: 'long',
+  }).format(new Date());
 
   elements.inputLoginUsername.value = elements.inputLoginPin.value = elements.inputTransferTo.value = elements.inputTransferAmount.value =
     '';
