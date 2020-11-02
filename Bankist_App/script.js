@@ -218,10 +218,10 @@ const updateUI = () => {
 
 const scheduleLogout = timeTillLogOut => {
   // Display timer
-  setInterval(() => {
+  const countDown = setInterval(() => {
     elements.labelTimer.textContent = 'hi';
     console.log('hi');
-    return;
+    clearInterval(countDown);
   }, 1000);
 
   // Logout after given time
