@@ -14,10 +14,11 @@ const openModal = e => {
 };
 
 // Closes modal window
-const closeModal = () => {
+const closeModal = e => {
   elements.modalElements.forEach(el => el.classList.add('hidden'));
 };
 
 // Modal window opening & closing handlers
 elements.btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 elements.btnsCloseModal.forEach(el => el.addEventListener('click', closeModal));
+document.addEventListener('keydown', closeModal);
