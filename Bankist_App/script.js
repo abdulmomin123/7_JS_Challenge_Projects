@@ -41,8 +41,9 @@ class Account {
     this.currency = '$';
   }
 
-  setMovements(movArr) {
+  setMovements(movArr, movDatesArr) {
     this.movements = movArr;
+    this.movementsDates = movDatesArr;
   }
 
   getCurrentBal() {
