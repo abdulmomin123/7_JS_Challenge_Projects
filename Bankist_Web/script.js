@@ -16,7 +16,7 @@ const openModal = e => {
 // Closes modal window
 const closeModal = e => {
   if (!e.key) elements.modalElements.forEach(el => el.classList.add('hidden'));
-  if (e.key && e.key === 'Escape')
+  if (e.key === 'Escape')
     elements.modalElements.forEach(el => el.classList.add('hidden'));
 };
 
