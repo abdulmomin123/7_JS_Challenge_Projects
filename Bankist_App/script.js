@@ -157,13 +157,18 @@ const renderMov = (acc, sorted = false) => {
 
   const allMovements = movArr.map((mov, i) => {
     const movDate = new Date(loggedInUser.movementsDates[i]);
-    const timeDiff = currentDate - movDate;
+    const timeDiff = Math.floor((currentDate - movDate) / 1000 / 60 / 60);
 
     console.log(timeDiff);
     const date = `${movDate.getDate()}`.padStart(2, 0);
     const month = `${movDate.getMonth()}`.padStart(2, 0);
     const year = `${movDate.getFullYear()}`;
-    const dateString = `${date}/${month}/${year}`;
+    const dateString =
+      timeDiff <= 24
+        ? `Today`
+        : timeDiff <= 48
+        ? `Yesterday`
+        : `${date}/${month}/${year}`;
 
     const movType = mov > 0 ? 'deposit' : 'withdrawal';
 
