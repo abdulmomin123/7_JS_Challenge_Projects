@@ -119,7 +119,7 @@ accounts[0].setMovements(
     '2020-05-08T14:11:59.604Z',
     '2020-05-27T17:01:17.194Z',
     '2020-07-11T23:36:17.929Z',
-    '2020-07-12T10:51:36.790Z',
+    '2020-10-26T10:51:36.790Z',
   ]
 );
 accounts[1].setMovements(
@@ -157,14 +157,19 @@ const renderMov = (acc, sorted = false) => {
 
   const allMovements = movArr.map((mov, i) => {
     const movDate = new Date(loggedInUser.movementsDates[i]);
-    const timeDiff = Math.floor((new Date() - movDate) / 1000 / 60 / 60);
+    const daysPassed = Math.floor((new Date() - movDate) / 1000 / 60 / 60 / 24);
 
+    const date = `${movDate.getDate()}`.padStart(2, 0);
+    const month = `${movDate.getMonth() + 1}`.padStart(2, 0);
+    const year = `${movDate.getFullYear()}`;
     const dateString =
-      timeDiff <= 24
+      daysPassed <= 1
         ? `Today`
-        : timeDiff <= 48
+        : daysPassed <= 2
         ? `Yesterday`
-        : new Intl.DateTimeFormat(loggedInUser.locale).format(new Date());
+        : daysPassed <= 7
+        ? `${daysPassed} days ago`
+        : `${date}/${month}/${year}`;
 
     const movType = mov > 0 ? 'deposit' : 'withdrawal';
 
