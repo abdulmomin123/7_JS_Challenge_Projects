@@ -218,8 +218,8 @@ const updateUI = () => {
 
 const scheduleLogout = () => {
   setTimeout(() => {
-    //
-  }, 100000);
+    elements.containerApp.classList.remove('logged-in');
+  }, 5000);
 };
 
 const authUser = e => {
