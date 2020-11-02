@@ -134,7 +134,7 @@ accounts[1].setMovements(
 
 let loggedInUser;
 let isSorted = false;
-let countDown, logout;
+let countDown;
 
 // Authentication
 const renderEl = arr => {
@@ -220,11 +220,9 @@ const updateUI = () => {
 const scheduleLogout = timeTillLogOut => {
   let totalTime = timeTillLogOut * 60;
 
-  clearTimeout(logout);
   clearInterval(countDown);
 
-  // Display timer
-  countDown = setInterval(() => {
+  const timer = () => {
     const minute = Math.floor(totalTime / 60);
     const seconds = `${totalTime % 60}`.padStart(2, 0);
 
@@ -238,7 +236,11 @@ const scheduleLogout = timeTillLogOut => {
     }
 
     totalTime--;
-  }, 1000);
+  };
+  timer();
+
+  // Display timer
+  countDown = setInterval(timer, 1000);
 };
 
 const authUser = e => {
@@ -255,7 +257,7 @@ const authUser = e => {
   if (loggedInUser) updateUI();
 
   // Schedule logout
-  scheduleLogout(0.1);
+  scheduleLogout(10);
 };
 
 const transferMoney = e => {
