@@ -30,14 +30,15 @@ const elements = {
 
 // Data
 class Account {
-  constructor(username, owner, pin) {
+  constructor(username, owner, pin, currency, locale) {
     this.username = username;
     this.owner = owner;
     this.pin = pin;
+    this.currency = currency;
+    this.locale = locale;
 
     // Static Properties
     this.interestRate = 1.2;
-    this.currency = '$';
   }
 
   setMovements(movArr, movDatesArr) {
@@ -104,8 +105,8 @@ const account2 = {
 };
 
 const accounts = [
-  new Account('ffff', 'Abdul Momin', 1111),
-  new Account('gggg', 'Jonas S.', 2222),
+  new Account('ffff', 'Abdul Momin', 1111, '$', 'pt-PT'),
+  new Account('gggg', 'Jonas S.', 2222, '$', 'en-US'),
 ];
 
 accounts[0].setMovements(
