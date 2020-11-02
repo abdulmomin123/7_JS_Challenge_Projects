@@ -69,6 +69,7 @@ class Account {
 
   transferMoney(amount, transferTo) {
     const receiver = accounts.find(acc => acc.username === transferTo);
+    const movDate = new Date().toISOString();
 
     if (
       receiver &&
@@ -76,8 +77,14 @@ class Account {
       amount <= this.getCurrentBal() &&
       transferTo !== this.username
     ) {
+      // push the amount
       this.movements.push(-amount);
       receiver.movements.push(amount);
+
+      // push the date
+      this.movementsDates.push(movDate);
+      receiver.movementsDates.push(movDate);
+
       updateUI();
     }
   }
