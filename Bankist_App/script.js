@@ -157,6 +157,9 @@ const renderMov = (acc, sorted = false) => {
 
   const allMovements = movArr.map((mov, i) => {
     const movDate = new Date(loggedInUser.movementsDates[i]);
+    const timeDiff = currentDate - movDate;
+
+    console.log(timeDiff);
     const date = `${movDate.getDate()}`.padStart(2, 0);
     const month = `${movDate.getMonth()}`.padStart(2, 0);
     const year = `${movDate.getFullYear()}`;
