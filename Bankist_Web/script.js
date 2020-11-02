@@ -1,45 +1,31 @@
 'use strict';
 
 // Modal window
-const elements = {
-  openingElements: document.querySelectorAll('.modal, .overlay'),
-  closingElements: document.querySelectorAll('.close-modal, .overlay'),
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.btn--close-modal');
+const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
-  modal: document.querySelector('.modal'),
-  overlay: document.querySelector('.overlay'),
-  btnCloseModal: document.querySelector('.btn--close-modal'),
-  btnsOpenModal: document.querySelectorAll('.btn--show-modal'),
+const openModal = function () {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
 };
 
-const openModal = () => {
-  openingElements.forEach(el => el.classList.remove('hidden'));
+const closeModal = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
 };
 
-const closeModal = () => {
-  openingElements.forEach(el => el.classList.add('hidden'));
-};
+for (let i = 0; i < btnsOpenModal.length; i++)
+  btnsOpenModal[i].addEventListener('click', openModal);
 
-buttons.forEach(btn => btn.addEventListener('click', openModal));
-closingElements.forEach(el => el.addEventListener('click', closeModal));
+btnCloseModal.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
 
-// const openModal = function () {
-//   modal.classList.remove('hidden');
-//   overlay.classList.remove('hidden');
-// };
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
 
-// const closeModal = function () {
-//   modal.classList.add('hidden');
-//   overlay.classList.add('hidden');
-// };
-
-// for (let i = 0; i < btnsOpenModal.length; i++)
-//   btnsOpenModal[i].addEventListener('click', openModal);
-
-// btnCloseModal.addEventListener('click', closeModal);
-// overlay.addEventListener('click', closeModal);
-
-// document.addEventListener('keydown', function (e) {
-//   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-//     closeModal();
-//   }
-// });
+const elements = {};
