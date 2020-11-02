@@ -149,6 +149,10 @@ const renderMov = (acc, sorted = false) => {
 
   const allMovements = movArr.map((mov, i) => {
     const movDate = new Date(loggedInUser.movementsDates[i]);
+    const date = `${movDate.getDate()}`.padStart(2, 0);
+    const month = `${movDate.getMonth()}`.padStart(2, 0);
+    const year = `${movDate.getFullYear()}`;
+    const dateString = `${date}/${month}/${year}`;
 
     const movType = mov > 0 ? 'deposit' : 'withdrawal';
 
@@ -157,9 +161,7 @@ const renderMov = (acc, sorted = false) => {
       <div class="movements__type movements__type--${movType}">${
       i + 1
     } ${movType}</div>
-      <div class="movements__date">${movDate.getDate()}/${
-      movDate.getMonth() + 1
-    }/${movDate.getFullYear()}</div>
+      <div class="movements__date">${dateString}</div>
       <div class="movements__value">${mov}&nbsp;${acc.currency}</div>
     </div>
     `;
@@ -172,7 +174,13 @@ const renderMov = (acc, sorted = false) => {
 };
 
 const updateUI = () => {
-  const date = new Date();
+  const today = new Date();
+  const date = `${today.getDate()}`.padStart(2, 0);
+  const month = `${today.getMonth() + 1}`.padStart(2, 0);
+  const year = today.getFullYear();
+  const hour = `${today.getHours()}`.padStart(2, 0);
+  const minute = `${today.getMinutes()}`.padStart(2, 0);
+  const dateString = `${date}/${month}/${year}, ${hour}:${minute}`;
 
   elements.inputLoginUsername.value = elements.inputLoginPin.value = elements.inputTransferTo.value = elements.inputTransferAmount.value =
     '';
@@ -180,11 +188,7 @@ const updateUI = () => {
   elements.labelWelcome.textContent = `Good Evening, ${
     loggedInUser.owner.split(' ')[0]
   }!`;
-  elements.labelDate.textContent =
-    `${date.getDate()}`.padStart(2, 0) +
-    `/${
-      date.getMonth() + 1
-    }/${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`;
+  elements.labelDate.textContent = dateString;
   elements.labelBalance.textContent = `${loggedInUser.getCurrentBal()} ${
     loggedInUser.currency
   }`;
