@@ -217,7 +217,9 @@ const updateUI = () => {
 };
 
 const scheduleLogout = () => {
-  //
+  setTimeout(() => {
+    //
+  }, 100000);
 };
 
 const authUser = e => {
