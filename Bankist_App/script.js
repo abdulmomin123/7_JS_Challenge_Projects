@@ -218,8 +218,9 @@ const updateUI = () => {
 
 const scheduleLogout = () => {
   setTimeout(() => {
+    elements.labelWelcome.textContent = `Log in to get started`;
     elements.containerApp.classList.remove('logged-in');
-  }, 5000);
+  }, 3000);
 };
 
 const authUser = e => {
