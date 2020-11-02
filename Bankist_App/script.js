@@ -134,6 +134,7 @@ accounts[1].setMovements(
 
 let loggedInUser;
 let isSorted = false;
+let countDown, logout;
 
 // Authentication
 const renderEl = arr => {
@@ -221,7 +222,8 @@ const scheduleLogout = timeTillLogOut => {
   let minute = Math.floor(totalTime / 60);
   let seconds = `${totalTime % 60}`.padStart(2, 0);
 
-  let countDown, logout;
+  clearTimeout(logout);
+  clearInterval(countDown);
 
   // Display timer
   countDown = setInterval(() => {
