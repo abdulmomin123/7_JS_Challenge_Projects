@@ -169,7 +169,7 @@ const renderMov = (acc, sorted = false) => {
         ? `Yesterday`
         : daysPassed <= 7
         ? `${daysPassed} days ago`
-        : `${date}/${month}/${year}`;
+        : new Intl.DateTimeFormat(loggedInUser.locale).format(movDate);
 
     const movType = mov > 0 ? 'deposit' : 'withdrawal';
 
