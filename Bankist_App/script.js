@@ -219,16 +219,17 @@ const updateUI = () => {
 const scheduleLogout = timeTillLogOut => {
   let totalTime = timeTillLogOut * 60;
   let minute = Math.floor(totalTime / 60);
-  let seconds = totalTime % 60;
+  let seconds = `${totalTime % 60}`.padStart(2, 0);
 
   // Display timer
   const countDown = setInterval(() => {
     elements.labelTimer.textContent = `${minute}:${seconds}`;
-    console.log(minute);
     totalTime--;
     minute = Math.floor(totalTime / 60);
-    seconds = totalTime % 60;
-    // clearInterval(countDown);
+    seconds = `${totalTime % 60}`.padStart(2, 0);
+
+    // Stop the timer
+    timeTillLogOut === 0 ? clearInterval(countDown) : null;
   }, 1000);
 
   // Logout after given time
