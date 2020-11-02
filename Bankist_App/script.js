@@ -52,13 +52,15 @@ class Account {
   getTotalIn() {
     return this.movements
       .filter(mov => mov > 0)
-      .reduce((acc, cur) => acc + cur);
+      .reduce((acc, cur) => acc + cur)
+      .toFixed(2);
   }
 
   getTotalOut() {
     return this.movements
       .filter(mov => mov < 0)
-      .reduce((acc, cur) => acc + cur);
+      .reduce((acc, cur) => acc + cur)
+      .toFixed(2);
   }
 
   getTotalInterest() {
