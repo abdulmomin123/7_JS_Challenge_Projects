@@ -159,9 +159,6 @@ const renderMov = (acc, sorted = false) => {
     const movDate = new Date(loggedInUser.movementsDates[i]);
     const daysPassed = Math.floor((new Date() - movDate) / 1000 / 60 / 60 / 24);
 
-    const date = `${movDate.getDate()}`.padStart(2, 0);
-    const month = `${movDate.getMonth() + 1}`.padStart(2, 0);
-    const year = `${movDate.getFullYear()}`;
     const dateString =
       daysPassed <= 1
         ? `Today`
