@@ -219,28 +219,26 @@ const updateUI = () => {
 
 const scheduleLogout = timeTillLogOut => {
   let totalTime = timeTillLogOut * 60;
-  let minute = Math.floor(totalTime / 60);
-  let seconds = `${totalTime % 60}`.padStart(2, 0);
 
   clearTimeout(logout);
   clearInterval(countDown);
 
   // Display timer
   countDown = setInterval(() => {
+    const minute = Math.floor(totalTime / 60);
+    const seconds = `${totalTime % 60}`.padStart(2, 0);
+
     elements.labelTimer.textContent = `${minute}:${seconds}`;
-    totalTime--;
-    minute = Math.floor(totalTime / 60);
-    seconds = `${totalTime % 60}`.padStart(2, 0);
 
     // Stop the timer
-    timeTillLogOut === 0 ? clearInterval(countDown) : null;
-  }, 1000);
+    if (totalTime === 0) {
+      clearInterval(countDown);
+      elements.labelWelcome.textContent = `Log in to get started`;
+      elements.containerApp.classList.remove('logged-in');
+    }
 
-  // Logout after given time
-  logout = setTimeout(() => {
-    elements.labelWelcome.textContent = `Log in to get started`;
-    elements.containerApp.classList.remove('logged-in');
-  }, timeTillLogOut * 60 * 1000);
+    totalTime--;
+  }, 1000);
 };
 
 const authUser = e => {
@@ -257,7 +255,7 @@ const authUser = e => {
   if (loggedInUser) updateUI();
 
   // Schedule logout
-  scheduleLogout(10);
+  scheduleLogout(0.1);
 };
 
 const transferMoney = e => {
