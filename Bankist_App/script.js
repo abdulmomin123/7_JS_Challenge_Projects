@@ -105,8 +105,8 @@ const account2 = {
 };
 
 const accounts = [
-  new Account('ffff', 'Abdul Momin', 1111, 'EUR', navigator.language),
-  new Account('gggg', 'Jonas S.', 2222, 'USD', navigator.language),
+  new Account('ffff', 'Abdul Momin', 1111, 'EUR', 'pt-PT'), // navigator.language
+  new Account('gggg', 'Jonas S.', 2222, 'USD', 'en-US'), // navigator.language
 ];
 
 accounts[0].setMovements(
