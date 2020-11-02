@@ -233,7 +233,7 @@ const scheduleLogout = timeTillLogOut => {
   }, 1000);
 
   // Logout after given time
-  setTimeout(() => {
+  const logout = setTimeout(() => {
     elements.labelWelcome.textContent = `Log in to get started`;
     elements.containerApp.classList.remove('logged-in');
   }, timeTillLogOut * 60 * 1000);
