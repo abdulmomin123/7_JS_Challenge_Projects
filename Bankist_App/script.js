@@ -153,11 +153,10 @@ const renderMov = (acc, sorted = false) => {
   const movArr = sorted
     ? [...acc.movements].sort((a, b) => (a > b ? 1 : -1))
     : acc.movements;
-  const currentDate = new Date();
 
   const allMovements = movArr.map((mov, i) => {
     const movDate = new Date(loggedInUser.movementsDates[i]);
-    const timeDiff = Math.floor((currentDate - movDate) / 1000 / 60 / 60);
+    const timeDiff = Math.floor((new Date() - movDate) / 1000 / 60 / 60);
 
     console.log(timeDiff);
     const date = `${movDate.getDate()}`.padStart(2, 0);
