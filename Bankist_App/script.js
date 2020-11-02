@@ -221,8 +221,10 @@ const scheduleLogout = timeTillLogOut => {
   let minute = Math.floor(totalTime / 60);
   let seconds = `${totalTime % 60}`.padStart(2, 0);
 
+  let countDown, logout;
+
   // Display timer
-  const countDown = setInterval(() => {
+  countDown = setInterval(() => {
     elements.labelTimer.textContent = `${minute}:${seconds}`;
     totalTime--;
     minute = Math.floor(totalTime / 60);
@@ -233,7 +235,7 @@ const scheduleLogout = timeTillLogOut => {
   }, 1000);
 
   // Logout after given time
-  const logout = setTimeout(() => {
+  logout = setTimeout(() => {
     elements.labelWelcome.textContent = `Log in to get started`;
     elements.containerApp.classList.remove('logged-in');
   }, timeTillLogOut * 60 * 1000);
