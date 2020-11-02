@@ -94,16 +94,6 @@ class Account {
   }
 }
 
-const account1 = {
-  currency: 'EUR',
-  locale: 'pt-PT', // de-DE
-};
-
-const account2 = {
-  currency: 'USD',
-  locale: 'en-US',
-};
-
 const accounts = [
   new Account('ffff', 'Abdul Momin', 1111, 'EUR', 'pt-PT'), // navigator.language
   new Account('gggg', 'Jonas S.', 2222, 'USD', 'en-US'), // navigator.language
