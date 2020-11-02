@@ -208,15 +208,27 @@ const updateUI = () => {
     }
   ).format(loggedInUser.getCurrentBal())}`;
   renderMov(loggedInUser, false);
-  elements.labelSumIn.textContent = `${loggedInUser.getTotalIn()} ${
-    loggedInUser.currency
-  }`;
-  elements.labelSumOut.textContent = `${Math.abs(loggedInUser.getTotalOut())} ${
-    loggedInUser.currency
-  }`;
-  elements.labelSumInterest.textContent = `${loggedInUser.getTotalInterest()} ${
-    loggedInUser.currency
-  }`;
+  elements.labelSumIn.textContent = `${new Intl.NumberFormat(
+    loggedInUser.locale,
+    {
+      style: 'currency',
+      currency: loggedInUser.currency,
+    }
+  ).format(loggedInUser.getTotalIn())}`;
+  elements.labelSumOut.textContent = `${new Intl.NumberFormat(
+    loggedInUser.locale,
+    {
+      style: 'currency',
+      currency: loggedInUser.currency,
+    }
+  ).format(Math.abs(loggedInUser.getTotalOut()))}`;
+  elements.labelSumInterest.textContent = `${new Intl.NumberFormat(
+    loggedInUser.locale,
+    {
+      style: 'currency',
+      currency: loggedInUser.currency,
+    }
+  ).format(loggedInUser.getTotalInterest())}`;
 
   elements.containerApp.classList.add('logged-in');
 };
