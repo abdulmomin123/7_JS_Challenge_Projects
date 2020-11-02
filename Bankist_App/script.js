@@ -239,13 +239,19 @@ const requestLoan = e => {
   e.preventDefault();
 
   const reqAmount = parseFloat(elements.inputLoanAmount.value);
+  const movDate = new Date().toISOString();
 
   if (
     reqAmount > 0 &&
     loggedInUser.movements.some(mov => mov >= reqAmount * 0.1)
   )
     setTimeout(() => {
+      // add the amount
       loggedInUser.movements.push(reqAmount);
+
+      // add the date
+      loggedInUser.movementsDates.push(movDate);
+
       updateUI();
     }, 2000);
 
