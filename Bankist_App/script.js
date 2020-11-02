@@ -105,8 +105,8 @@ const account2 = {
 };
 
 const accounts = [
-  new Account('ffff', 'Abdul Momin', 1111, '$', 'pt-PT'),
-  new Account('gggg', 'Jonas S.', 2222, '$', 'en-US'),
+  new Account('ffff', 'Abdul Momin', 1111, 'EUR', 'pt-PT'),
+  new Account('gggg', 'Jonas S.', 2222, 'USD', 'en-US'),
 ];
 
 accounts[0].setMovements(
@@ -189,13 +189,7 @@ const renderMov = (acc, sorted = false) => {
 };
 
 const updateUI = () => {
-  const today = new Date();
-  const date = `${today.getDate()}`.padStart(2, 0);
-  const month = `${today.getMonth() + 1}`.padStart(2, 0);
-  const year = today.getFullYear();
-  const hour = `${today.getHours()}`.padStart(2, 0);
-  const minute = `${today.getMinutes()}`.padStart(2, 0);
-  const dateString = `${date}/${month}/${year}, ${hour}:${minute}`;
+  const today = new Intl.DateTimeFormat(loggedInUser.locale).format(new Date());
 
   elements.inputLoginUsername.value = elements.inputLoginPin.value = elements.inputTransferTo.value = elements.inputTransferAmount.value =
     '';
@@ -203,7 +197,7 @@ const updateUI = () => {
   elements.labelWelcome.textContent = `Good Evening, ${
     loggedInUser.owner.split(' ')[0]
   }!`;
-  elements.labelDate.textContent = dateString;
+  elements.labelDate.textContent = today;
   elements.labelBalance.textContent = `${loggedInUser.getCurrentBal()} ${
     loggedInUser.currency
   }`;
