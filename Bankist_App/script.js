@@ -216,11 +216,18 @@ const updateUI = () => {
   elements.containerApp.classList.add('logged-in');
 };
 
-const scheduleLogout = () => {
+const scheduleLogout = timeTillLogOut => {
+  // Display timer
+  setInterval(() => {
+    elements.labelTimer.textContent = 'hi';
+    console.log('hi');
+    return;
+  }, 1000);
+
   setTimeout(() => {
     elements.labelWelcome.textContent = `Log in to get started`;
     elements.containerApp.classList.remove('logged-in');
-  }, 600000);
+  }, timeTillLogOut * 60 * 1000);
 };
 
 const authUser = e => {
@@ -237,7 +244,7 @@ const authUser = e => {
   if (loggedInUser) updateUI();
 
   // Schedule logout
-  scheduleLogout();
+  scheduleLogout(10);
 };
 
 const transferMoney = e => {
