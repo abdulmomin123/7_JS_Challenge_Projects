@@ -148,6 +148,8 @@ const renderMov = (acc, sorted = false) => {
     : acc.movements;
 
   const allMovements = movArr.map((mov, i) => {
+    const movDate = new Date(loggedInUser.movementsDates[i]);
+
     const movType = mov > 0 ? 'deposit' : 'withdrawal';
 
     const markup = `
