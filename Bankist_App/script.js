@@ -68,6 +68,9 @@ class Account {
   }
 
   transferMoney(amount, transferTo) {
+    clearInterval(countDown);
+    scheduleLogout(10);
+
     const receiver = accounts.find(acc => acc.username === transferTo);
     const movDate = new Date().toISOString();
 
@@ -272,6 +275,9 @@ const transferMoney = e => {
 
 const requestLoan = e => {
   e.preventDefault();
+
+  clearInterval(countDown);
+  scheduleLogout(10);
 
   const reqAmount = parseFloat(elements.inputLoanAmount.value);
   const movDate = new Date().toISOString();
