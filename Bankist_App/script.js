@@ -157,7 +157,9 @@ const renderMov = (acc, sorted = false) => {
       <div class="movements__type movements__type--${movType}">${
       i + 1
     } ${movType}</div>
-      <div class="movements__date">12/03/2020</div>
+      <div class="movements__date">${movDate.getDay()}/${
+      movDate.getMonth() + 1
+    }/${movDate.getFullYear()}</div>
       <div class="movements__value">${mov}&nbsp;${acc.currency}</div>
     </div>
     `;
