@@ -5,6 +5,8 @@ const elements = {
   modalElements: document.querySelectorAll('.modal, .overlay'),
   btnsOpenModal: document.querySelectorAll('.btn--show-modal'),
   btnsCloseModal: document.querySelectorAll('.btn--close-modal, .overlay'),
+
+  btnScrollTo: document.querySelector('.btn--scroll-to'),
 };
 
 // Opens modal window
