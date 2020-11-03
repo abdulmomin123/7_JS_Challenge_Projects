@@ -21,7 +21,15 @@ const closeModal = e => {
     elements.modalElements.forEach(el => el.classList.add('hidden'));
 };
 
+// Smooth scroll
+const smoothScroll = () => {
+  //
+};
+
 // Modal window opening & closing handlers
 elements.btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 elements.btnsCloseModal.forEach(el => el.addEventListener('click', closeModal));
 document.addEventListener('keydown', closeModal);
+
+// Smooth scroll handlers
+elements.btnScrollTo.addEventListener('click', smoothScroll);
