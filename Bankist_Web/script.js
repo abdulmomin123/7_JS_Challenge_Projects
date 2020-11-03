@@ -13,6 +13,8 @@ const elements = {
   navLinks: document.querySelectorAll('.nav__link'),
 
   tabsContainer: document.querySelector('.operations__tab-container'),
+  tabs: document.querySelectorAll('.operations__tab'),
+  operationsContent: document.querySelectorAll('.operations__content'),
 
   sections: [...document.querySelectorAll('.section')],
 };
@@ -63,6 +65,11 @@ elements.btnsSmoothScr.forEach(btn =>
 const switchTab = e => {
   const target = e.target.closest('.operations__tab');
   if (target === elements.tabsContainer) return;
+
+  elements.tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  elements.operationsContent.forEach(con =>
+    con.classList.remove('operations__content--active')
+  );
 
   target.classList.add('operations__tab--active');
   target.parentNode.parentNode
