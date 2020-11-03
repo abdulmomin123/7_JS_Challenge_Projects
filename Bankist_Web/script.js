@@ -7,6 +7,8 @@ const elements = {
   btnsCloseModal: document.querySelectorAll('.btn--close-modal, .overlay'),
 
   btnScrollTo: document.querySelector('.btn--scroll-to'),
+
+  sections: [...document.querySelectorAll('.section')],
 };
 
 // Opens modal window
@@ -23,7 +25,11 @@ const closeModal = e => {
 
 // Smooth scroll
 const smoothScroll = () => {
-  window.scrollTo({ top: 681, left: 0, behavior: 'smooth' });
+  window.scrollTo({
+    top: elements.sections[0].offsetTop,
+    left: 0,
+    behavior: 'smooth',
+  });
 };
 
 // Modal window opening & closing handlers
