@@ -23,7 +23,7 @@ const closeModal = e => {
 
 // Smooth scroll
 const smoothScroll = () => {
-  //
+  window.scrollTo({ top: 681, left: 0, behavior: 'smooth' });
 };
 
 // Modal window opening & closing handlers
