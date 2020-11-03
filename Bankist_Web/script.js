@@ -38,6 +38,8 @@ const smoothScroll = e => {
 
 // Hide other nav links on hover
 const navHoverEffect = e => {
+  elements.navLinks.classList.add('hi');
+  e.target.classList.remove('hi');
   console.log(e);
 };
 
