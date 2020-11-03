@@ -59,6 +59,11 @@ elements.btnsSmoothScr.forEach(btn =>
   btn.addEventListener('click', smoothScroll)
 );
 
+// Operation tabs switcher
+const switchTab = e => {
+  console.log(e);
+};
+
 //////////////////////// Event Listeners /////////////////////////
 // Navigation links on hover handlers
 elements.navLinks.forEach(link =>
