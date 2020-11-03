@@ -11,6 +11,7 @@ const elements = {
       '.btn--scroll-to, .nav__links :not(:last-child)'
     ),
   ],
+  navLinks: document.querySelectorAll('.nav__link'),
 
   sections: [...document.querySelectorAll('.section')],
 };
@@ -36,8 +37,8 @@ const smoothScroll = e => {
 };
 
 // Hide other nav links on hover
-const navHoverEffect = () => {
-  //
+const navHoverEffect = e => {
+  console.log(e);
 };
 
 // Modal window opening & closing handlers
@@ -51,6 +52,6 @@ elements.btnsSmoothScr.forEach(btn =>
 );
 
 // Navigation links on hover handlers
-elements.btnsSmoothScr
-  .slice(1)
-  .forEach(btn => btn.addEventListener('mouseenter', navHoverEffect));
+elements.navLinks.forEach(link =>
+  link.addEventListener('mouseenter', navHoverEffect)
+);
