@@ -5,7 +5,6 @@ const elements = {
   modalElements: document.querySelectorAll('.modal, .overlay'),
   btnsOpenModal: document.querySelectorAll('.btn--show-modal'),
   btnsCloseModal: document.querySelectorAll('.btn--close-modal, .overlay'),
-
   btnsSmoothScr: [
     ...document.querySelectorAll(
       '.btn--scroll-to, .nav__links :not(:last-child)'
@@ -13,9 +12,12 @@ const elements = {
   ],
   navLinks: document.querySelectorAll('.nav__link'),
 
+  tabsContainer: document.querySelector('.operations__tab-container'),
+
   sections: [...document.querySelectorAll('.section')],
 };
 
+//////////////////////// Functions ///////////////////////////////
 // Opens modal window
 const openModal = e => {
   e.preventDefault();
@@ -57,6 +59,7 @@ elements.btnsSmoothScr.forEach(btn =>
   btn.addEventListener('click', smoothScroll)
 );
 
+//////////////////////// Event Listeners /////////////////////////
 // Navigation links on hover handlers
 elements.navLinks.forEach(link =>
   link.addEventListener('mouseenter', navHoverEffect)
@@ -64,3 +67,6 @@ elements.navLinks.forEach(link =>
 elements.navLinks.forEach(link =>
   link.addEventListener('mouseleave', navHoverEffect.bind(null, true))
 );
+
+// Operations tab switch handlers
+elements.tabsContainer.addEventListener('click', switchTab);
