@@ -50,4 +50,7 @@ elements.btnsSmoothScr.forEach(btn =>
   btn.addEventListener('click', smoothScroll)
 );
 
-//
+// Navigation links on hover handlers
+elements.btnsSmoothScr
+  .slice(1)
+  .forEach(btn => btn.addEventListener('mouseenter', navHoverEffect));
