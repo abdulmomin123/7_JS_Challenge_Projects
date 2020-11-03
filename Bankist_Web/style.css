@@ -139,6 +139,10 @@ img {
   list-style: none;
 }
 
+.hide-nav-link {
+  opacity: 0.4;
+}
+
 .nav__item {
   margin-left: 4rem;
 }

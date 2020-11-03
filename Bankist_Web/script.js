@@ -37,10 +37,14 @@ const smoothScroll = e => {
 };
 
 // Hide other nav links on hover
-const navHoverEffect = e => {
-  elements.navLinks.forEach(link => link.classList.add('hide-link'));
-  e.target.classList.remove('hide-link');
-  console.log(e);
+const navHoverEffect = (e, mouseLeave) => {
+  if (mouseLeave) {
+    elements.navLinks.forEach(link => link.classList.remove('hide-nav-link'));
+    return;
+  }
+
+  elements.navLinks.forEach(link => link.classList.add('hide-nav-link'));
+  e.target.classList.remove('hide-nav-link');
 };
 
 // Modal window opening & closing handlers
@@ -58,7 +62,5 @@ elements.navLinks.forEach(link =>
   link.addEventListener('mouseenter', navHoverEffect)
 );
 elements.navLinks.forEach(link =>
-  link.addEventListener('mouseleave', () =>
-    elements.navLinks.forEach(link => link.classList.remove('hide-link'))
-  )
+  link.addEventListener('mouseleave', navHoverEffect.bind(null, true))
 );
