@@ -84,7 +84,7 @@ const switchTab = e => {
 
 // Makes the navigation sticky after scrolling
 const stickyNav = e => {
-  //
+  console.log(window.scrollY);
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
