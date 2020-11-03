@@ -6,7 +6,9 @@ const elements = {
   btnsOpenModal: document.querySelectorAll('.btn--show-modal'),
   btnsCloseModal: document.querySelectorAll('.btn--close-modal, .overlay'),
 
-  btnScrollTo: document.querySelector('.btn--scroll-to'),
+  btnsSmoothScr: document.querySelectorAll(
+    '.btn--scroll-to, .nav__links :not(:last-child)'
+  ),
 
   sections: [...document.querySelectorAll('.section')],
 };
@@ -34,7 +36,6 @@ elements.btnsCloseModal.forEach(el => el.addEventListener('click', closeModal));
 document.addEventListener('keydown', closeModal);
 
 // Smooth scroll handlers
-elements.btnScrollTo.addEventListener(
-  'click',
-  smoothScroll.bind(null, elements.sections[0])
+elements.btnsSmoothScr.forEach(btn =>
+  btn.addEventListener('click', smoothScroll.bind(null, elements.sections[0]))
 );
