@@ -19,7 +19,7 @@ const elements = {
   sections: [...document.querySelectorAll('.section')],
 };
 
-//////////////////////// Functions ///////////////////////////////
+//////////////////////// Functions \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // Opens modal window
 const openModal = e => {
   e.preventDefault();
@@ -82,7 +82,7 @@ const switchTab = e => {
   }
 };
 
-//////////////////////// Event Listeners /////////////////////////
+//////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
 elements.navLinks.forEach(link =>
   link.addEventListener('mouseenter', navHoverEffect)
