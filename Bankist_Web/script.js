@@ -63,8 +63,8 @@ elements.btnsSmoothScr.forEach(btn =>
 
 // Operation tabs switcher
 const switchTab = e => {
+  if (e.target === elements.tabsContainer) return;
   const target = e.target.closest('.operations__tab');
-  if (target === elements.tabsContainer) return;
 
   // hide previous active tab & content
   elements.tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
