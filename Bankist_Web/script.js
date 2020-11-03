@@ -79,8 +79,6 @@ const switchTab = e => {
     target.parentNode.parentNode
       .querySelector(`.operations__content--${target.dataset.tab}`)
       .classList.add('operations__content--active');
-
-    console.log();
   }
 };
 
