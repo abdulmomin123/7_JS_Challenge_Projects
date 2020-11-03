@@ -61,9 +61,10 @@ elements.btnsSmoothScr.forEach(btn =>
 
 // Operation tabs switcher
 const switchTab = e => {
-  if (e.target === elements.tabsContainer) return;
+  const target = e.target;
+  if (target === elements.tabsContainer) return;
 
-  console.log(e.target);
+  console.log(target);
 };
 
 //////////////////////// Event Listeners /////////////////////////
