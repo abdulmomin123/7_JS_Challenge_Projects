@@ -82,6 +82,11 @@ const switchTab = e => {
   }
 };
 
+// Makes the navigation sticky after scrolling
+const stickyNav = e => {
+  //
+};
+
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
 elements.navLinks.forEach(link =>
@@ -93,3 +98,6 @@ elements.navLinks.forEach(link =>
 
 // Operations tab switch handlers
 elements.tabsContainer.addEventListener('click', switchTab);
+
+// Sticky navigation handler
+window.addEventListener('scroll', stickyNav);
