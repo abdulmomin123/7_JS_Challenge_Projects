@@ -66,11 +66,13 @@ const switchTab = e => {
   const target = e.target.closest('.operations__tab');
   if (target === elements.tabsContainer) return;
 
+  // hide previous active tab & content
   elements.tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
   elements.operationsContent.forEach(con =>
     con.classList.remove('operations__content--active')
   );
 
+  // make the clicked tab & content active
   target.classList.add('operations__tab--active');
   target.parentNode.parentNode
     .querySelector(`.operations__content--${target.dataset.tab}`)
