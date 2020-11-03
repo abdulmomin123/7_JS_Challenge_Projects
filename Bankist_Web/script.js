@@ -33,6 +33,11 @@ const smoothScroll = e => {
   });
 };
 
+// Hide other nav links on hover
+const navHoverEffect = () => {
+  //
+};
+
 // Modal window opening & closing handlers
 elements.btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 elements.btnsCloseModal.forEach(el => el.addEventListener('click', closeModal));
