@@ -24,12 +24,8 @@ const closeModal = e => {
 };
 
 // Smooth scroll
-const smoothScroll = () => {
-  window.scrollTo({
-    top: elements.sections[0].offsetTop,
-    left: 0,
-    behavior: 'smooth',
-  });
+const smoothScroll = element => {
+  element.scrollIntoView({ behavior: 'smooth' });
 };
 
 // Modal window opening & closing handlers
@@ -38,4 +34,7 @@ elements.btnsCloseModal.forEach(el => el.addEventListener('click', closeModal));
 document.addEventListener('keydown', closeModal);
 
 // Smooth scroll handlers
-elements.btnScrollTo.addEventListener('click', smoothScroll);
+elements.btnScrollTo.addEventListener(
+  'click',
+  smoothScroll.bind(null, elements.sections[0])
+);
