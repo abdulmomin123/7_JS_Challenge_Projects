@@ -64,11 +64,16 @@ const switchTab = e => {
   const target = e.target.closest('.operations__tab');
   if (target === elements.tabsContainer) return;
 
-  // operations__content--active
-
   target.classList.add('operations__tab--active');
+  target.parentNode.parentNode
+    .querySelector(`.operations__content--${target.dataset.tab}`)
+    .classList.add('operations__content--active');
 
-  console.log(target);
+  console.log(
+    target.parentNode.parentNode.querySelector(
+      `.operations__content--${target.dataset.tab}`
+    )
+  );
 };
 
 //////////////////////// Event Listeners /////////////////////////
