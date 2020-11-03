@@ -63,22 +63,25 @@ elements.btnsSmoothScr.forEach(btn =>
 
 // Operation tabs switcher
 const switchTab = e => {
-  if (e.target === elements.tabsContainer) return;
-  const target = e.target.closest('.operations__tab');
+  if (e.target !== elements.tabsContainer) {
+    const target = e.target.closest('.operations__tab');
 
-  // hide previous active tab & content
-  elements.tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
-  elements.operationsContent.forEach(con =>
-    con.classList.remove('operations__content--active')
-  );
+    // hide previous active tab & content
+    elements.tabs.forEach(tab =>
+      tab.classList.remove('operations__tab--active')
+    );
+    elements.operationsContent.forEach(con =>
+      con.classList.remove('operations__content--active')
+    );
 
-  // make the clicked tab & content active
-  target.classList.add('operations__tab--active');
-  target.parentNode.parentNode
-    .querySelector(`.operations__content--${target.dataset.tab}`)
-    .classList.add('operations__content--active');
+    // make the clicked tab & content active
+    target.classList.add('operations__tab--active');
+    target.parentNode.parentNode
+      .querySelector(`.operations__content--${target.dataset.tab}`)
+      .classList.add('operations__content--active');
 
-  console.log();
+    console.log();
+  }
 };
 
 //////////////////////// Event Listeners /////////////////////////
