@@ -90,7 +90,6 @@ const stickyNav = entries => {
   entries.forEach(entry => {
     console.log(entries);
     if (entry.isIntersecting) {
-      console.log('hi');
       elements.nav.classList.add('sticky');
       elements.header.classList.add('sticky-active');
     } else {
