@@ -109,4 +109,4 @@ elements.navLinks.forEach(link =>
 elements.tabsContainer.addEventListener('click', switchTab);
 
 // Sticky navigation handler
-document.addEventListener('scroll', stickyNav);
+window.addEventListener('scroll', stickyNav);
