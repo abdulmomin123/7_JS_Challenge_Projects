@@ -12,6 +12,9 @@ const elements = {
   ],
   navLinks: document.querySelectorAll('.nav__link'),
 
+  nav: document.querySelector('.nav'),
+  header: document.querySelector('.header__title'),
+
   tabsContainer: document.querySelector('.operations__tab-container'),
   tabs: document.querySelectorAll('.operations__tab'),
   operationsContent: document.querySelectorAll('.operations__content'),
@@ -83,7 +86,19 @@ const switchTab = e => {
 };
 
 // Makes the navigation sticky after scrolling
-const stickyNav = () => {};
+const stickyNav = entries => {
+  entries.forEach(entry => {
+    console.log(entries);
+    if (entry.isIntersecting) {
+      console.log('hi');
+      elements.nav.classList.add('sticky');
+      elements.header.classList.add('sticky-active');
+    } else {
+      elements.nav.classList.remove('sticky');
+      elements.header.classList.remove('sticky-active');
+    }
+  });
+};
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
@@ -98,3 +113,9 @@ elements.navLinks.forEach(link =>
 elements.tabsContainer.addEventListener('click', switchTab);
 
 // Sticky navigation handler
+const observer = new IntersectionObserver(stickyNav, {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.15,
+});
+observer.observe(elements.sections[0]);
