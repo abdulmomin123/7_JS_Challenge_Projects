@@ -96,8 +96,6 @@ const stickyNav = () => {
         elements.nav.classList.remove('sticky'),
         elements.header.classList.remove('sticky-active'),
       ];
-
-  console.log();
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
