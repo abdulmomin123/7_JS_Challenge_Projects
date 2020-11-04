@@ -13,6 +13,7 @@ const elements = {
   navLinks: document.querySelectorAll('.nav__link'),
 
   nav: document.querySelector('.nav'),
+  header: document.querySelector('.header__title'),
 
   tabsContainer: document.querySelector('.operations__tab-container'),
   tabs: document.querySelectorAll('.operations__tab'),
@@ -87,8 +88,14 @@ const switchTab = e => {
 // Makes the navigation sticky after scrolling
 const stickyNav = () => {
   window.scrollY >= 250
-    ? elements.nav.classList.add('sticky')
-    : elements.nav.classList.remove('sticky');
+    ? [
+        elements.header.classList.add('sticky-active'),
+        elements.nav.classList.add('sticky'),
+      ]
+    : [
+        elements.header.classList.remove('sticky-active'),
+        elements.nav.classList.remove('sticky'),
+      ];
 
   console.log();
 };
