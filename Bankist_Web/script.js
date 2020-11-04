@@ -90,7 +90,7 @@ const stickyNav = () => {
     ? elements.nav.classList.add('sticky')
     : elements.nav.classList.remove('sticky');
 
-  console.log(elements.nav.getBoundingClientRect().height);
+  console.log();
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
