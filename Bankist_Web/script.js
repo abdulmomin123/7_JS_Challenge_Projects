@@ -12,9 +12,6 @@ const elements = {
   ],
   navLinks: document.querySelectorAll('.nav__link'),
 
-  nav: document.querySelector('.nav'),
-  header: document.querySelector('.header__title'),
-
   tabsContainer: document.querySelector('.operations__tab-container'),
   tabs: document.querySelectorAll('.operations__tab'),
   operationsContent: document.querySelectorAll('.operations__content'),
@@ -86,15 +83,7 @@ const switchTab = e => {
 };
 
 // Makes the navigation sticky after scrolling
-const stickyNav = () => {
-  if (window.scrollY >= 250) {
-    elements.nav.classList.add('sticky');
-    elements.header.classList.add('sticky-active');
-  } else {
-    elements.nav.classList.remove('sticky');
-    elements.header.classList.remove('sticky-active');
-  }
-};
+const stickyNav = () => {};
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
@@ -109,4 +98,3 @@ elements.navLinks.forEach(link =>
 elements.tabsContainer.addEventListener('click', switchTab);
 
 // Sticky navigation handler
-window.addEventListener('scroll', stickyNav);
