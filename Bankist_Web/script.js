@@ -89,12 +89,12 @@ const switchTab = e => {
 const stickyNav = () => {
   window.scrollY >= 250
     ? [
-        elements.header.classList.add('sticky-active'),
         elements.nav.classList.add('sticky'),
+        elements.header.classList.add('sticky-active'),
       ]
     : [
-        elements.header.classList.remove('sticky-active'),
         elements.nav.classList.remove('sticky'),
+        elements.header.classList.remove('sticky-active'),
       ];
 
   console.log();
