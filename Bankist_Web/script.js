@@ -101,3 +101,4 @@ elements.tabsContainer.addEventListener('click', switchTab);
 
 // Sticky navigation handler
 window.addEventListener('scroll', stickyNav);
+//
