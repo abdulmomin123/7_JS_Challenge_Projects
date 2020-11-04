@@ -85,10 +85,13 @@ const switchTab = e => {
 };
 
 // Makes the navigation sticky after scrolling
-const stickyNav = () =>
+const stickyNav = () => {
   window.scrollY >= 250
     ? elements.nav.classList.add('sticky')
     : elements.nav.classList.remove('sticky');
+
+  console.log(elements.nav.getBoundingClientRect().height);
+};
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
