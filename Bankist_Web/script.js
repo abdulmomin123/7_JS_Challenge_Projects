@@ -114,7 +114,6 @@ elements.tabsContainer.addEventListener('click', switchTab);
 // Sticky navigation handler
 const observer = new IntersectionObserver(stickyNav, {
   root: null,
-  rootMargin: '0px',
   threshold: 0.15,
 });
 observer.observe(elements.sections[0]);
