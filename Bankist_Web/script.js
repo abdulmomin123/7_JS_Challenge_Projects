@@ -89,7 +89,7 @@ const switchTab = e => {
 const stickyNav = entries => {
   const [entry] = entries;
 
-  if (entry.intersectionRatio <= 0.5) {
+  if (entry.intersectionRatio <= 0.8) {
     elements.nav.classList.add('sticky');
     elements.header.classList.add('sticky-active');
   } else {
@@ -115,6 +115,6 @@ elements.tabsContainer.addEventListener('click', switchTab);
 // Sticky navigation handler
 const observer = new IntersectionObserver(stickyNav, {
   root: null,
-  threshold: 0.5,
+  threshold: 0.8,
 });
 observer.observe(elements.header);
