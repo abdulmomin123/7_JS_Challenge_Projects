@@ -87,14 +87,14 @@ const switchTab = e => {
 
 // Makes the navigation sticky after scrolling
 const stickyNav = entries => {
-  entries.forEach(entry => {
-    elements.nav.classList.add('sticky');
-    elements.header.classList.add('sticky-active');
-    elements.nav.classList.remove('sticky');
-    elements.header.classList.remove('sticky-active');
+  const [entry] = entries;
 
-    console.log(entries);
-  });
+  elements.nav.classList.add('sticky');
+  elements.header.classList.add('sticky-active');
+  elements.nav.classList.remove('sticky');
+  elements.header.classList.remove('sticky-active');
+
+  console.log(entry);
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
