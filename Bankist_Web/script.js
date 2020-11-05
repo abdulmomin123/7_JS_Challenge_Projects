@@ -89,7 +89,7 @@ const switchTab = e => {
 const stickyNav = entries => {
   const [entry] = entries;
 
-  if (entry.intersectionRatio >= 0.5) {
+  if (entry.intersectionRatio <= 0.5) {
     elements.nav.classList.add('sticky');
     elements.header.classList.add('sticky-active');
   } else {
