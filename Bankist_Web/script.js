@@ -118,3 +118,4 @@ const observer = new IntersectionObserver(stickyNav, {
   threshold: 0.15,
 });
 observer.observe(elements.sections[0]);
+//
