@@ -91,9 +91,12 @@ const stickyNav = entries => {
 
   if (entry.intersectionRatio <= 0.8) {
     elements.nav.classList.add('sticky');
+    setTimeout(() => {
+      elements.nav.classList.add('animate-sticky-nav');
+    }, 20);
     elements.header.classList.add('sticky-active');
   } else {
-    elements.nav.classList.remove('sticky');
+    elements.nav.classList.remove('sticky', 'animate-sticky-nav');
     elements.header.classList.remove('sticky-active');
   }
 };
