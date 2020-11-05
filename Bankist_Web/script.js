@@ -89,10 +89,13 @@ const switchTab = e => {
 const stickyNav = entries => {
   const [entry] = entries;
 
-  elements.nav.classList.add('sticky');
-  elements.header.classList.add('sticky-active');
-  elements.nav.classList.remove('sticky');
-  elements.header.classList.remove('sticky-active');
+  if (entry.intersectionRatio >= 0.5) {
+    elements.nav.classList.add('sticky');
+    elements.header.classList.add('sticky-active');
+  } else {
+    elements.nav.classList.remove('sticky');
+    elements.header.classList.remove('sticky-active');
+  }
 
   console.log(entry);
 };
