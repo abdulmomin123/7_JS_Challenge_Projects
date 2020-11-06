@@ -120,13 +120,12 @@ const loadImage = (entries, observer) => {
 
     if (entry.isIntersecting) {
       target.setAttribute('src', target.dataset.src);
-      observer.unobserve(target);
 
       target.addEventListener('load', () =>
         target.classList.remove('lazy-img')
       );
 
-      console.log('hi');
+      observer.unobserve(target);
     }
   });
 };
@@ -161,5 +160,6 @@ elements.sections.forEach(section => sectionsObserver.observe(section));
 const imagesObserver = new IntersectionObserver(loadImage, {
   root: null,
   threshold: 0,
+  rootMargin: '150px',
 });
 elements.secImages.forEach(img => imagesObserver.observe(img));
