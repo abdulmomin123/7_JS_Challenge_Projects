@@ -119,3 +119,9 @@ const observer = new IntersectionObserver(stickyNav, {
   threshold: 0.8,
 });
 observer.observe(elements.header);
+
+// Reaviling Sections on scroll handler
+const sectionsObserver = new IntersectionObserver(revealSections, {
+  root: null,
+  threshold: 0.8,
+});
