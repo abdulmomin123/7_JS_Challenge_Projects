@@ -27,7 +27,7 @@ const elements = {
 
   slides: document.querySelectorAll('.slide'),
 };
-let slidesPos = [200, 100, 0];
+let slidesPos = [0, 100, 200];
 
 //////////////////////// Functions \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // Opens modal window
@@ -147,13 +147,23 @@ const slideElement = e => {
 
   if (target.classList.contains('slider__btn--left')) {
     elements.slides.forEach((slide, i) => {
-      slidesPos[i] += 100;
-      slide.style.transform = `translateX(${slidesPos[i]}%)`;
+      if (slidesPos.includes(200)) {
+        slidesPos = [200, 100, 0];
+        slide.style.transform = `translateX(${slidesPos[i]}%)`;
+      } else {
+        slidesPos[i] += 100;
+        slide.style.transform = `translateX(${slidesPos[i]}%)`;
+      }
     });
   } else {
     elements.slides.forEach((slide, i) => {
-      slidesPos[i] -= 100;
-      slide.style.transform = `translateX(${slidesPos[i]}%)`;
+      if (slidesPos.includes(-200)) {
+        slidesPos = [200, 100, 0];
+        slide.style.transform = `translateX(${slidesPos[i]}%)`;
+      } else {
+        slidesPos[i] -= 100;
+        slide.style.transform = `translateX(${slidesPos[i]}%)`;
+      }
     });
   }
 };

@@ -409,11 +409,11 @@ h4 {
   transition: transform 1s;
 }
 
-.slide--1 {
+.slide--2 {
   transform: translateX(100%);
 }
 
-.slide--2 {
+.slide--3 {
   transform: translateX(200%);
 }
 
