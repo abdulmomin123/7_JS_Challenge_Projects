@@ -101,6 +101,11 @@ const stickyNav = entries => {
   }
 };
 
+// Animate sections & make them visible on scroll
+const revealSections = () => {
+  //
+};
+
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
 elements.navLinks.forEach(link =>
@@ -123,5 +128,5 @@ observer.observe(elements.header);
 // Reaviling Sections on scroll handler
 const sectionsObserver = new IntersectionObserver(revealSections, {
   root: null,
-  threshold: 0.8,
+  threshold: 0.1,
 });
