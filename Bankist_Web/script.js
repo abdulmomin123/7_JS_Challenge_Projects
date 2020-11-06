@@ -102,10 +102,11 @@ const stickyNav = entries => {
 };
 
 // Animate sections & make them visible on scroll
-const revealSections = entries => {
+const revealSections = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.remove('section--hidden');
+      observer.unobserve(entry.target);
     }
   });
 };
