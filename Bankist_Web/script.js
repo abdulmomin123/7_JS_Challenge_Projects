@@ -119,14 +119,13 @@ const loadImage = (entries, observer) => {
     const target = entry.target;
 
     if (entry.isIntersecting) {
-      if (entry.intersectionRatio <= 1) {
+      if (entry.intersectionRatio <= 0.8) {
         target.setAttribute('src', target.dataset.src);
+        console.log(entry);
       } else {
         target.classList.remove('lazy-img');
+        observer.unobserve(target);
       }
-
-      console.log(entry);
-      // observer.unobserve(entry.target);
     }
   });
 };
@@ -160,7 +159,6 @@ elements.sections.forEach(section => sectionsObserver.observe(section));
 // Lazy loading of images handler
 const imagesObserver = new IntersectionObserver(loadImage, {
   root: null,
-  rootMargin: '100px',
-  threshold: [0, 1],
+  threshold: [0, 0.8],
 });
 elements.secImages.forEach(img => imagesObserver.observe(img));
