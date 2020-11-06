@@ -20,6 +20,8 @@ const elements = {
   operationsContent: document.querySelectorAll('.operations__content'),
 
   sections: [...document.querySelectorAll('.section')],
+
+  secImages: document.querySelectorAll('.features__img'),
 };
 
 //////////////////////// Functions \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -111,6 +113,11 @@ const revealSections = (entries, observer) => {
   });
 };
 
+// Lazy load images on scroll
+const loadImage = (entries, observer) => {
+  //
+};
+
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
 elements.navLinks.forEach(link =>
@@ -136,3 +143,5 @@ const sectionsObserver = new IntersectionObserver(revealSections, {
   threshold: 0.2,
 });
 elements.sections.forEach(section => sectionsObserver.observe(section));
+
+// Lazy loading of images handler
