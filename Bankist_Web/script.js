@@ -135,7 +135,7 @@ const loadImage = (entries, observer) => {
 // Testimonials slider
 const slideElement = e => {
   if (
-    e.target !== elements.slider.querySelector('.slider__btn--left') ||
+    e.target !== elements.slider.querySelector('.slider__btn--left') &&
     e.target !== elements.slider.querySelector('.slider__btn--right')
   )
     return;
