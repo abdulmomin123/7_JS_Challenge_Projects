@@ -153,7 +153,6 @@ const slideElement = e => {
     elements.slides.forEach((slide, i) => {
       slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
     });
-    //
   }
   // left button click
   else {
@@ -164,7 +163,6 @@ const slideElement = e => {
     elements.slides.forEach((slide, i) => {
       slide.style.transform = `translateX(${i * 100}%)`;
     });
-    //
   }
 };
 
