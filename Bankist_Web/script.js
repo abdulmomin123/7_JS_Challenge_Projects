@@ -115,7 +115,20 @@ const revealSections = (entries, observer) => {
 
 // Lazy load images on scroll
 const loadImage = (entries, observer) => {
-  //
+  entries.forEach(entry => {
+    const target = entry.target;
+
+    if (entry.isIntersecting) {
+      if (entry.intersectionRatio <= 1) {
+        target.setAttribute('src', target.dataset.src);
+      } else {
+        target.classList.remove('lazy-img');
+      }
+
+      console.log(entry);
+      // observer.unobserve(entry.target);
+    }
+  });
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
@@ -147,6 +160,7 @@ elements.sections.forEach(section => sectionsObserver.observe(section));
 // Lazy loading of images handler
 const imagesObserver = new IntersectionObserver(loadImage, {
   root: null,
-  threshold: 0.5,
+  rootMargin: '100px',
+  threshold: [0, 1],
 });
 elements.secImages.forEach(img => imagesObserver.observe(img));
