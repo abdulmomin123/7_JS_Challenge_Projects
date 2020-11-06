@@ -130,3 +130,4 @@ const sectionsObserver = new IntersectionObserver(revealSections, {
   root: null,
   threshold: 0.1,
 });
+elements.sections.forEach(section => sectionsObserver.observe(section));
