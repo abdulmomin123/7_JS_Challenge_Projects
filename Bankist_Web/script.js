@@ -146,6 +146,8 @@ const slideElement = e => {
 
   // right button click
   if (target.classList.contains('slider__btn--right')) {
+    if (curSlide === 2) return;
+
     curSlide++;
 
     elements.slides.forEach((slide, i) => {
@@ -155,6 +157,8 @@ const slideElement = e => {
   }
   // left button click
   else {
+    if (curSlide === 0) return;
+
     curSlide--;
 
     elements.slides.forEach((slide, i) => {
