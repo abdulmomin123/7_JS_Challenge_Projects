@@ -24,7 +24,6 @@ const elements = {
   secImages: document.querySelectorAll('.features__img'),
 
   slider: document.querySelector('.slider'),
-
   slides: document.querySelectorAll('.slide'),
 };
 let slidesPos = [0, 100, 200];
@@ -144,28 +143,6 @@ const slideElement = e => {
     target !== elements.slider.querySelector('.slider__btn--right')
   )
     return;
-
-  if (target.classList.contains('slider__btn--left')) {
-    elements.slides.forEach((slide, i) => {
-      if (slidesPos[0] === 0) {
-        slidesPos = [0, 100, 200];
-        slide.style.transform = `translateX(${slidesPos[i]}%)`;
-      } else {
-        slidesPos[i] += 100;
-        slide.style.transform = `translateX(${slidesPos[i]}%)`;
-      }
-    });
-  } else {
-    elements.slides.forEach((slide, i) => {
-      if (slidesPos[2] === 0) {
-        slidesPos = [0, 100, 200];
-        slide.style.transform = `translateX(${slidesPos[i]}%)`;
-      } else {
-        slidesPos[i] -= 100;
-        slide.style.transform = `translateX(${slidesPos[i]}%)`;
-      }
-    });
-  }
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
