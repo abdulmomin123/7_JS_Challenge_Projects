@@ -146,7 +146,13 @@ const slideElement = e => {
 
   // right button click
   if (target.classList.contains('slider__btn--right')) {
-    if (curSlide === 2) return;
+    if (curSlide === 2) {
+      curSlide = 0;
+      elements.slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(${100 * i}%)`;
+      });
+      return;
+    }
 
     curSlide++;
 
@@ -156,12 +162,18 @@ const slideElement = e => {
   }
   // left button click
   else {
-    if (curSlide === 0) return;
+    if (curSlide === 0) {
+      curSlide = 2;
+      elements.slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(${100 * (i - 2)}%)`;
+      });
+      return;
+    }
 
     curSlide--;
 
     elements.slides.forEach((slide, i) => {
-      slide.style.transform = `translateX(${i * 100}%)`;
+      slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
     });
   }
 };
