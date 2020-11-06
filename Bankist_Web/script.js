@@ -24,6 +24,8 @@ const elements = {
   secImages: document.querySelectorAll('.features__img'),
 
   slider: document.querySelector('.slider'),
+
+  slides: document.querySelectorAll('.slide'),
 };
 
 //////////////////////// Functions \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -136,13 +138,23 @@ const loadImage = (entries, observer) => {
 const slideElement = e => {
   const target = e.target;
 
+  let slidesPos = [0, 100, 200];
+
   if (
     target !== elements.slider.querySelector('.slider__btn--left') &&
     target !== elements.slider.querySelector('.slider__btn--right')
   )
     return;
 
-  console.log(e);
+  if (target.classList.contains('slider__btn--left')) {
+    elements.slides.forEach(
+      slide => (slide.style.transform = `translateX(100%)`)
+    );
+  } else {
+    elements.slides.forEach(
+      slide => (slide.style.transform = `translateX(-100%)`)
+    );
+  }
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
