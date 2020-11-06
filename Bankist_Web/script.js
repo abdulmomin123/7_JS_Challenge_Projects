@@ -144,8 +144,19 @@ const slideElement = e => {
   )
     return;
 
+  // right button click
+  if (target.classList.contains('slider__btn--right')) {
+    curSlide++;
+    //
+  }
+  // left button click
+  else {
+    curSlide--;
+    //
+  }
+
   elements.slides.forEach((slide, i) => {
-    slide.style.transform = `translateX(${slidesPos[i]}%)`;
+    slide.style.transform = `translateX(${i * 100}%)`;
   });
 };
 
