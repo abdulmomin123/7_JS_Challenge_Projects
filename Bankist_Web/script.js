@@ -147,14 +147,12 @@ const slideElement = e => {
 
   if (target.classList.contains('slider__btn--left')) {
     elements.slides.forEach((slide, i) => {
-      slidesPos[i] -= 100;
+      slidesPos[i] += 100;
       slide.style.transform = `translateX(${slidesPos[i]}%)`;
-      console.log(slidesPos);
     });
   } else {
     elements.slides.forEach((slide, i) => {
-      slidesPos[i] += 100;
-      console.log(slidesPos);
+      slidesPos[i] -= 100;
       slide.style.transform = `translateX(${slidesPos[i]}%)`;
     });
   }
