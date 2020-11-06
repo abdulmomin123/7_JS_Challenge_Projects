@@ -102,8 +102,12 @@ const stickyNav = entries => {
 };
 
 // Animate sections & make them visible on scroll
-const revealSections = () => {
-  //
+const revealSections = entries => {
+  // elements.sections[entries]
+  entries.forEach(entry => {
+    //
+  });
+  console.log(entries);
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
