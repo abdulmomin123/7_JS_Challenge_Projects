@@ -151,7 +151,6 @@ const slideElement = e => {
     } else {
       curSlide++;
     }
-
     goToSlide();
   }
   // left button click
@@ -161,11 +160,11 @@ const slideElement = e => {
     } else {
       curSlide--;
     }
-
     goToSlide();
   }
 };
 
+// helper function for slider function
 const goToSlide = () => {
   elements.slides.forEach((slide, i) => {
     slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
