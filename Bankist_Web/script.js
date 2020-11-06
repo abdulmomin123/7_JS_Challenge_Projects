@@ -148,34 +148,28 @@ const slideElement = e => {
   if (target.classList.contains('slider__btn--right')) {
     if (curSlide === 2) {
       curSlide = 0;
-      elements.slides.forEach((slide, i) => {
-        slide.style.transform = `translateX(${100 * i}%)`;
-      });
-      return;
+    } else {
+      curSlide++;
     }
 
-    curSlide++;
-
-    elements.slides.forEach((slide, i) => {
-      slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
-    });
+    goToSlide();
   }
   // left button click
   else {
     if (curSlide === 0) {
       curSlide = 2;
-      elements.slides.forEach((slide, i) => {
-        slide.style.transform = `translateX(${100 * (i - 2)}%)`;
-      });
-      return;
+    } else {
+      curSlide--;
     }
 
-    curSlide--;
-
-    elements.slides.forEach((slide, i) => {
-      slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
-    });
+    goToSlide();
   }
+};
+
+const goToSlide = () => {
+  elements.slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
+  });
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
