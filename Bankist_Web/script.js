@@ -163,3 +163,5 @@ const imagesObserver = new IntersectionObserver(loadImage, {
   rootMargin: '150px',
 });
 elements.secImages.forEach(img => imagesObserver.observe(img));
+
+// Testimonials slider handler

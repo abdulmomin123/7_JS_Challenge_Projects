@@ -392,7 +392,7 @@ h4 {
   position: relative;
 
   /* IN THE END */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .slide {
@@ -407,6 +407,14 @@ h4 {
 
   /* THIS creates the animation! */
   transition: transform 1s;
+}
+
+.slide--1 {
+  transform: translateX(100%);
+}
+
+.slide--2 {
+  transform: translateX(200%);
 }
 
 .slide > img {
