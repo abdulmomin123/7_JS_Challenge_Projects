@@ -119,12 +119,14 @@ const loadImage = (entries, observer) => {
     const target = entry.target;
 
     if (entry.isIntersecting) {
-      if (entry.intersectionRatio <= 0.8) {
-        target.setAttribute('src', target.dataset.src);
-      } else {
-        target.classList.remove('lazy-img');
-        observer.unobserve(target);
-      }
+      target.setAttribute('src', target.dataset.src);
+      observer.unobserve(target);
+
+      target.addEventListener('load', () =>
+        target.classList.remove('lazy-img')
+      );
+
+      console.log('hi');
     }
   });
 };
@@ -158,6 +160,6 @@ elements.sections.forEach(section => sectionsObserver.observe(section));
 // Lazy loading of images handler
 const imagesObserver = new IntersectionObserver(loadImage, {
   root: null,
-  threshold: [0, 0.8],
+  threshold: 0,
 });
 elements.secImages.forEach(img => imagesObserver.observe(img));
