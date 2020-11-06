@@ -121,7 +121,6 @@ const loadImage = (entries, observer) => {
     if (entry.isIntersecting) {
       if (entry.intersectionRatio <= 0.8) {
         target.setAttribute('src', target.dataset.src);
-        console.log(entry);
       } else {
         target.classList.remove('lazy-img');
         observer.unobserve(target);
