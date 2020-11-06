@@ -145,3 +145,8 @@ const sectionsObserver = new IntersectionObserver(revealSections, {
 elements.sections.forEach(section => sectionsObserver.observe(section));
 
 // Lazy loading of images handler
+const imagesObserver = new IntersectionObserver(loadImage, {
+  root: null,
+  threshold: 0.5,
+});
+elements.secImages.forEach(img => imagesObserver.observe(img));
