@@ -22,6 +22,8 @@ const elements = {
   sections: [...document.querySelectorAll('.section')],
 
   secImages: document.querySelectorAll('.features__img'),
+
+  slider: document.querySelector('.slider'),
 };
 
 //////////////////////// Functions \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -130,6 +132,13 @@ const loadImage = (entries, observer) => {
   });
 };
 
+// Testimonials slider
+const slideElement = e => {
+  if (e.target !== elements.slider.querySelector('.slider__btn')) return;
+
+  console.log(e);
+};
+
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
 // Navigation links on hover handlers
 elements.navLinks.forEach(link =>
@@ -165,3 +174,4 @@ const imagesObserver = new IntersectionObserver(loadImage, {
 elements.secImages.forEach(img => imagesObserver.observe(img));
 
 // Testimonials slider handler
+elements.slider.addEventListener('click', slideElement);
