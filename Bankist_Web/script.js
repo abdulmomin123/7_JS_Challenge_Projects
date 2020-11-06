@@ -26,7 +26,7 @@ const elements = {
   slider: document.querySelector('.slider'),
   slides: document.querySelectorAll('.slide'),
 };
-let slidesPos = [0, 100, 200];
+let curSlide = 0;
 
 //////////////////////// Functions \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // Opens modal window
@@ -143,6 +143,10 @@ const slideElement = e => {
     target !== elements.slider.querySelector('.slider__btn--right')
   )
     return;
+
+  elements.slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${slidesPos[i]}%)`;
+  });
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
