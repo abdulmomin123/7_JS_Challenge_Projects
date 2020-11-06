@@ -106,7 +106,6 @@ const revealSections = entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.remove('section--hidden');
-      console.log(entry.target);
     }
   });
 };
@@ -133,6 +132,6 @@ observer.observe(elements.header);
 // Reaviling Sections on scroll handler
 const sectionsObserver = new IntersectionObserver(revealSections, {
   root: null,
-  threshold: 0.15,
+  threshold: 0.2,
 });
 elements.sections.forEach(section => sectionsObserver.observe(section));
