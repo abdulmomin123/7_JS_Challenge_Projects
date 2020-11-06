@@ -103,11 +103,13 @@ const stickyNav = entries => {
 
 // Animate sections & make them visible on scroll
 const revealSections = entries => {
-  // elements.sections[entries]
-  entries.forEach(entry => {
-    //
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      elements.sections[i].classList.remove('section--hidden');
+    }
+    console.log(elements.sections[i]);
   });
-  console.log(entries);
+  // console.log(entries);
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
@@ -132,6 +134,6 @@ observer.observe(elements.header);
 // Reaviling Sections on scroll handler
 const sectionsObserver = new IntersectionObserver(revealSections, {
   root: null,
-  threshold: 0.1,
+  threshold: 0.15,
 });
 elements.sections.forEach(section => sectionsObserver.observe(section));
