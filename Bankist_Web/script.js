@@ -147,8 +147,8 @@ const slideElement = e => {
 
   if (target.classList.contains('slider__btn--left')) {
     elements.slides.forEach((slide, i) => {
-      if (slidesPos.includes(200)) {
-        slidesPos = [200, 100, 0];
+      if (slidesPos[0] === 0) {
+        slidesPos = [0, 100, 200];
         slide.style.transform = `translateX(${slidesPos[i]}%)`;
       } else {
         slidesPos[i] += 100;
@@ -157,8 +157,8 @@ const slideElement = e => {
     });
   } else {
     elements.slides.forEach((slide, i) => {
-      if (slidesPos.includes(-200)) {
-        slidesPos = [200, 100, 0];
+      if (slidesPos[2] === 0) {
+        slidesPos = [0, 100, 200];
         slide.style.transform = `translateX(${slidesPos[i]}%)`;
       } else {
         slidesPos[i] -= 100;
