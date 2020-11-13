@@ -138,6 +138,8 @@ const loadImage = (entries, observer) => {
 const slideElement = e => {
   const target = e.target;
 
+  console.log(e);
+
   if (
     target !== elements.slider.querySelector('.slider__btn--left') &&
     target !== elements.slider.querySelector('.slider__btn--right')
@@ -146,20 +148,16 @@ const slideElement = e => {
 
   // right button click
   if (target.classList.contains('slider__btn--right')) {
-    if (curSlide === 2) {
-      curSlide = 0;
-    } else {
-      curSlide++;
-    }
+    if (curSlide === 2) curSlide = 0;
+    else curSlide++;
+
     goToSlide();
   }
   // left button click
   else {
-    if (curSlide === 0) {
-      curSlide = 2;
-    } else {
-      curSlide--;
-    }
+    if (curSlide === 0) curSlide = 2;
+    else curSlide--;
+
     goToSlide();
   }
 };
@@ -207,3 +205,6 @@ elements.secImages.forEach(img => imagesObserver.observe(img));
 
 // Testimonials slider handler
 elements.slider.addEventListener('click', slideElement);
+
+// Sliding the sliders with arrow keys
+document.addEventListener('keydown', slideElement);
