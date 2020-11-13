@@ -169,6 +169,9 @@ const slideElement = e => {
   } else {
     elements.sliderBtnRight.click();
   }
+
+  // time to highlight the appropriate dot
+  highlightDot(elements.dots[curSlide]);
 };
 
 const slideElementWithDots = e => {
@@ -176,8 +179,7 @@ const slideElementWithDots = e => {
 
   if (!target.classList.contains('dots__dot')) return;
 
-  elements.dots.forEach(dot => dot.classList.remove('dots__dot--active'));
-  target.classList.add('dots__dot--active');
+  highlightDot(target);
 
   curSlide = parseInt(target.dataset.slide);
 
@@ -189,6 +191,12 @@ const goToSlide = () => {
   elements.slides.forEach((slide, i) => {
     slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
   });
+};
+
+// Highlights the appropriate dot
+const highlightDot = dot => {
+  elements.dots.forEach(dot => dot.classList.remove('dots__dot--active'));
+  dot.classList.add('dots__dot--active');
 };
 
 //////////////////////// Event Listeners \\\\\\\\\\\\\\\\\\\\\\\\\
