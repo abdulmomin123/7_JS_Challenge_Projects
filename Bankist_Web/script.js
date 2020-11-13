@@ -27,6 +27,8 @@ const elements = {
   slides: document.querySelectorAll('.slide'),
   sliderBtnRight: document.querySelector('.slider__btn--right'),
   sliderBtnLeft: document.querySelector('.slider__btn--left'),
+
+  dotsContainer: document.querySelector('.dots'),
 };
 let curSlide = 0;
 
@@ -168,6 +170,10 @@ const slideElement = e => {
   }
 };
 
+const slideElementWithDots = e => {
+  //
+};
+
 // helper function for slider function
 const goToSlide = () => {
   elements.slides.forEach((slide, i) => {
@@ -214,3 +220,6 @@ elements.slider.addEventListener('click', slideElement);
 
 // Sliding the sliders with arrow keys
 document.addEventListener('keydown', slideElement);
+
+// Sliding the sliders on dots click
+elements.dotsContainer.addEventListener('click', slideElementWithDots);
