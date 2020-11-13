@@ -156,7 +156,7 @@ const slideElement = e => {
     goToSlide();
   }
   // left button click
-  else if (elements.sliderBtnLeft) {
+  else if (target === elements.sliderBtnLeft) {
     if (curSlide === 0) curSlide = 2;
     else curSlide--;
 
@@ -164,7 +164,7 @@ const slideElement = e => {
   } else if (target === 37) {
     console.log(target);
   } else {
-    //
+    console.log(target);
   }
 };
 
