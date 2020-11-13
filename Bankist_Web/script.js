@@ -136,13 +136,13 @@ const loadImage = (entries, observer) => {
 
 // Testimonials slider
 const slideElement = e => {
-  const target = e.target;
-
-  console.log(e);
+  const target = e.keyCode || e.target;
 
   if (
     target !== elements.slider.querySelector('.slider__btn--left') &&
-    target !== elements.slider.querySelector('.slider__btn--right')
+    target !== elements.slider.querySelector('.slider__btn--right') &&
+    target !== 37 &&
+    target !== 39
   )
     return;
 
