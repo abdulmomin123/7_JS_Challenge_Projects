@@ -25,6 +25,8 @@ const elements = {
 
   slider: document.querySelector('.slider'),
   slides: document.querySelectorAll('.slide'),
+  sliderBtnRight: document.querySelector('.slider__btn--right'),
+  sliderBtnLeft: document.querySelector('.slider__btn--left'),
 };
 let curSlide = 0;
 
@@ -139,26 +141,30 @@ const slideElement = e => {
   const target = e.keyCode || e.target;
 
   if (
-    target !== elements.slider.querySelector('.slider__btn--left') &&
-    target !== elements.slider.querySelector('.slider__btn--right') &&
+    target !== elements.sliderBtnRight &&
+    target !== elements.sliderBtnLeft &&
     target !== 37 &&
     target !== 39
   )
     return;
 
   // right button click
-  if (target.classList.contains('slider__btn--right')) {
+  if (target === elements.sliderBtnRight) {
     if (curSlide === 2) curSlide = 0;
     else curSlide++;
 
     goToSlide();
   }
   // left button click
-  else {
+  else if (elements.sliderBtnLeft) {
     if (curSlide === 0) curSlide = 2;
     else curSlide--;
 
     goToSlide();
+  } else if (target === 37) {
+    console.log(target);
+  } else {
+    //
   }
 };
 
