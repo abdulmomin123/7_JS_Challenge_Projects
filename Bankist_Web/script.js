@@ -29,6 +29,7 @@ const elements = {
   sliderBtnLeft: document.querySelector('.slider__btn--left'),
 
   dotsContainer: document.querySelector('.dots'),
+  dots: document.querySelectorAll('.dots__dot'),
 };
 let curSlide = 0;
 
@@ -171,7 +172,16 @@ const slideElement = e => {
 };
 
 const slideElementWithDots = e => {
-  //
+  const target = e.target;
+
+  if (!target.classList.contains('dots__dot')) return;
+
+  elements.dots.forEach(dot => dot.classList.remove('dots__dot--active'));
+  target.classList.add('dots__dot--active');
+
+  curSlide = parseInt(target.dataset.slide);
+
+  goToSlide();
 };
 
 // helper function for slider function
