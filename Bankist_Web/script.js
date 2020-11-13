@@ -162,9 +162,9 @@ const slideElement = e => {
 
     goToSlide();
   } else if (target === 37) {
-    console.log(target);
+    elements.sliderBtnLeft.click();
   } else {
-    console.log(target);
+    elements.sliderBtnRight.click();
   }
 };
 
