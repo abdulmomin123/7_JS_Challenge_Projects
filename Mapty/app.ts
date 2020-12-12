@@ -28,24 +28,26 @@ const months = [
 ];
 
 // Functions
-navigator.geolocation.getCurrentPosition(
-  position => {
-    const { latitude, longitude } = position.coords;
-    const coords = [latitude, longitude];
+// Get users position and display the map
+if (navigator.geolocation)
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const { latitude, longitude } = position.coords;
+      const coords = [latitude, longitude];
 
-    const map = L.map('map').setView(coords, 12);
+      const map = L.map('map').setView(coords, 12);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
 
-    L.marker(coords)
-      .addTo(map)
-      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
-  },
-  err => console.log(err)
-);
+      L.marker(coords)
+        .addTo(map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup();
+    },
+    err => console.log(err)
+  );
 
 // Events Listeners
