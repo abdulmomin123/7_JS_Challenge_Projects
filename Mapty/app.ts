@@ -46,6 +46,25 @@ if (navigator.geolocation)
         .addTo(map)
         .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
         .openPopup();
+
+      // Adding a click handler on the map
+      map.on('click', (e: any) => {
+        const { lat, lng } = e.latlng;
+
+        L.marker([lat, lng])
+          .addTo(map)
+          .bindPopup(
+            L.popup({
+              maxWidth: 250,
+              minWidth: 100,
+              autoClose: false,
+              closeOnClick: false,
+              className: 'running-popup',
+            })
+          )
+          .setPopupContent('Workout')
+          .openPopup();
+      });
     },
     _err => alert('Could not get your location : (')
   );
