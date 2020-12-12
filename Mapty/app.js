@@ -22,3 +22,8 @@ const months = [
     'November',
     'December',
 ];
+navigator.geolocation.getCurrentPosition(position => {
+    const { latitude, longitude } = position.coords;
+    const link = `https://www.google.com/maps/@${latitude},${longitude}`;
+    console.log(link);
+}, err => console.log(err));
