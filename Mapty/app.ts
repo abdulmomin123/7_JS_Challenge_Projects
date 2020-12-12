@@ -47,7 +47,7 @@ if (navigator.geolocation)
         .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
         .openPopup();
     },
-    err => console.log(err)
+    _err => alert('Could not get your location : (')
   );
 
 // Events Listeners
