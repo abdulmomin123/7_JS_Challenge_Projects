@@ -24,6 +24,13 @@ const months = [
 ];
 navigator.geolocation.getCurrentPosition(position => {
     const { latitude, longitude } = position.coords;
-    const link = `https://www.google.com/maps/@${latitude},${longitude}`;
-    console.log(link);
+    const coords = [latitude, longitude];
+    const map = L.map('map').setView(coords, 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+    L.marker(coords)
+        .addTo(map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup();
 }, err => console.log(err));
