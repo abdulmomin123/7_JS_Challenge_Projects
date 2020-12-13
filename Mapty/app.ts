@@ -1,12 +1,20 @@
 // Dom elements
 const elements = {
-  form: document.querySelector('.form'),
-  containerWorkouts: document.querySelector('.workouts'),
-  inputType: document.querySelector('.form__input--type'),
-  inputDistance: document.querySelector('.form__input--distance'),
-  inputDuration: document.querySelector('.form__input--duration'),
-  inputCadence: document.querySelector('.form__input--cadence'),
-  inputElevation: document.querySelector('.form__input--elevation'),
+  form: document.querySelector('.form') as HTMLFormElement,
+  containerWorkouts: document.querySelector('.workouts') as HTMLUListElement,
+  inputType: document.querySelector('.form__input--type') as HTMLSelectElement,
+  inputDistance: document.querySelector(
+    '.form__input--distance'
+  ) as HTMLInputElement,
+  inputDuration: document.querySelector(
+    '.form__input--duration'
+  ) as HTMLInputElement,
+  inputCadence: document.querySelector(
+    '.form__input--cadence'
+  ) as HTMLInputElement,
+  inputElevation: document.querySelector(
+    '.form__input--elevation'
+  ) as HTMLInputElement,
 };
 
 // Global variables
