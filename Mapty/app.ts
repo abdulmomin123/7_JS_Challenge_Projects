@@ -30,20 +30,27 @@ declare const L: {
 class Workout {
   id: string;
   date: Date;
-  coords: { latitude: number; longitude: number };
-  distance: number;
-  duration: number;
 
   constructor(
-    coords: { latitude: number; longitude: number },
-    distance: number,
-    duration: number
+    public coords: { latitude: number; longitude: number },
+    public distance: number,
+    public duration: number
   ) {
     this.id = `${new Date()}`.slice(-10);
     this.date = new Date();
-    this.coords = coords;
-    this.distance = distance;
-    this.duration = duration;
+  }
+}
+
+// running class
+class Running extends Workout {
+  constructor(
+    public coords: { latitude: number; longitude: number },
+    public distance: number,
+    public duration: number,
+    public cadence: number
+  ) {
+    super(coords, distance, duration);
+    this.cadence = cadence;
   }
 }
 
