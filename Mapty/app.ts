@@ -17,9 +17,34 @@ const elements = {
   ) as HTMLInputElement,
 };
 
-// Global variables
+// Global variables and classes
 let map: any, mapEvent: any;
 
+class App {
+  constructor() {
+    //
+  }
+
+  private getPosition() {
+    //
+  }
+
+  private loadMap() {
+    //
+  }
+
+  private showForm() {
+    //
+  }
+
+  private toggleElevationField() {
+    //
+  }
+
+  private newWorkout() {
+    //
+  }
+}
 declare const L: {
   map: Function;
   tileLayer: Function;
