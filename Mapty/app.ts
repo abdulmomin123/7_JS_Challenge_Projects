@@ -28,6 +28,7 @@ declare const L: {
 
 // workout class
 class Workout {
+  id: string;
   date: Date;
   coords: { latitude: number; longitude: number };
   distance: number;
@@ -38,6 +39,7 @@ class Workout {
     distance: number,
     duration: number
   ) {
+    this.id = `${new Date()}`.slice(-10);
     this.date = new Date();
     this.coords = coords;
     this.distance = distance;

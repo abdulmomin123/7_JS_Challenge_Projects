@@ -10,6 +10,7 @@ const elements = {
 };
 class Workout {
     constructor(coords, distance, duration) {
+        this.id = `${new Date()}`.slice(-10);
         this.date = new Date();
         this.coords = coords;
         this.distance = distance;
