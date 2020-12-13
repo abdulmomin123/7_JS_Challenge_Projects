@@ -25,6 +25,20 @@ class Running extends Workout {
         this.duration = duration;
         this.cadence = cadence;
         this.cadence = cadence;
+        this.pace = 0;
+    }
+    calcPace() {
+        this.pace = this.duration / this.distance;
+    }
+}
+class Cycling extends Workout {
+    constructor(coords, distance, duration, elevationGain) {
+        super(coords, distance, duration);
+        this.coords = coords;
+        this.distance = distance;
+        this.duration = duration;
+        this.elevationGain = elevationGain;
+        this.elevationGain = elevationGain;
     }
 }
 class App {
