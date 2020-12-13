@@ -18,6 +18,8 @@ const elements = {
 };
 
 // Global variables
+let map: any, mapEvent: any;
+
 declare const L: {
   map: Function;
   tileLayer: Function;
@@ -52,7 +54,7 @@ if (navigator.geolocation)
       const { latitude, longitude } = position.coords;
       const coords = [latitude, longitude];
 
-      const map = L.map('map').setView(coords, 12);
+      map = L.map('map').setView(coords, 12);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
@@ -66,29 +68,37 @@ if (navigator.geolocation)
 
       // Adding a click handler on the map
       map.on('click', (e: any) => {
-        // Getting the latitude and longitude from the click
-        const { lat, lng } = e.latlng;
+        mapEvent = e;
 
         // Displaying the form
         elements.form.classList.remove('hidden');
         elements.inputDistance.focus();
-
-        L.marker([lat, lng])
-          .addTo(map)
-          .bindPopup(
-            L.popup({
-              maxWidth: 250,
-              minWidth: 100,
-              autoClose: false,
-              closeOnClick: false,
-              className: 'running-popup',
-            })
-          )
-          .setPopupContent('Workout')
-          .openPopup();
       });
     },
     _err => alert('Could not get your location : (')
   );
 
+// Displays the marker
+const displayMarker = (e: Event) => {
+  e.preventDefault();
+
+  // Getting the latitude and longitude from the click
+  const { lat, lng } = mapEvent.latlng;
+
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 250,
+        minWidth: 100,
+        autoClose: false,
+        closeOnClick: false,
+        className: 'running-popup',
+      })
+    )
+    .setPopupContent('Workout')
+    .openPopup();
+};
+
 // Events Listeners
+elements.form.addEventListener('submit', displayMarker);
