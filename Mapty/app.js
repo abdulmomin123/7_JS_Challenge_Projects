@@ -13,7 +13,7 @@ class Workout {
         this.coords = coords;
         this.distance = distance;
         this.duration = duration;
-        this.id = `${new Date()}`.slice(-10);
+        this.id = `${Date.now()}`.slice(-10);
         this.date = new Date();
     }
 }
@@ -45,9 +45,13 @@ class Cycling extends Workout {
         this.calcSpeed();
     }
     calcSpeed() {
-        this.speed = this.distance / this.duration;
+        this.speed = this.distance / (this.duration / 60);
+        return this.speed;
     }
 }
+const cy = new Cycling([1, 2], 11, 11, 11);
+const wk = new Running([1, 2], 11, 11, 11);
+console.log(cy, wk);
 class App {
     constructor() {
         this.getPosition();

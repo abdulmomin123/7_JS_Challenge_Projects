@@ -26,17 +26,19 @@ declare const L: {
   popup: Function;
 };
 
+type Coords = [number, number];
+
 // workout class
 class Workout {
   id: string;
   date: Date;
 
   constructor(
-    public coords: { latitude: number; longitude: number },
+    public coords: Coords,
     public distance: number,
     public duration: number
   ) {
-    this.id = `${new Date()}`.slice(-10);
+    this.id = `${Date.now()}`.slice(-10);
     this.date = new Date();
   }
 }
@@ -46,7 +48,7 @@ class Running extends Workout {
   pace: number;
 
   constructor(
-    public coords: { latitude: number; longitude: number },
+    public coords: Coords,
     public distance: number,
     public duration: number,
     public cadence: number
@@ -69,7 +71,7 @@ class Cycling extends Workout {
   speed: number;
 
   constructor(
-    public coords: { latitude: number; longitude: number },
+    public coords: Coords,
     public distance: number,
     public duration: number,
     public elevationGain: number
@@ -83,11 +85,17 @@ class Cycling extends Workout {
 
   calcSpeed() {
     // km/hour
-    this.speed = this.distance / this.duration;
+    this.speed = this.distance / (this.duration / 60);
+    return this.speed;
   }
 }
 
-// main app class
+const cy = new Cycling([1, 2], 11, 11, 11);
+const wk = new Running([1, 2], 11, 11, 11);
+
+console.log(cy, wk);
+
+/////////////////////////////// main app class
 class App {
   private map: any;
   private mapEvent: any;
