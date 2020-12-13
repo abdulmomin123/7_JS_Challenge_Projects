@@ -36,6 +36,8 @@ if (navigator.geolocation)
             .openPopup();
         map.on('click', (e) => {
             const { lat, lng } = e.latlng;
+            elements.form.classList.remove('hidden');
+            elements.inputDistance.focus();
             L.marker([lat, lng])
                 .addTo(map)
                 .bindPopup(L.popup({

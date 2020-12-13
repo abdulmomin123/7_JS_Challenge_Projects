@@ -18,7 +18,16 @@ const elements = {
 };
 
 // Global variables
-declare const L: any;
+declare const L: {
+  map: Function;
+  tileLayer: Function;
+  addTo: Function;
+  bindPopup: Function;
+  marker: Function;
+  popup: Function;
+  setPopupContent: Function;
+  openPopup: Function;
+};
 
 const months = [
   'January',
@@ -57,7 +66,12 @@ if (navigator.geolocation)
 
       // Adding a click handler on the map
       map.on('click', (e: any) => {
+        // Getting the latitude and longitude from the click
         const { lat, lng } = e.latlng;
+
+        // Displaying the form
+        elements.form.classList.remove('hidden');
+        elements.inputDistance.focus();
 
         L.marker([lat, lng])
           .addTo(map)
