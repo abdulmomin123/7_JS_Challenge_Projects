@@ -43,6 +43,8 @@ if (navigator.geolocation)
     }, _err => alert('Could not get your location : ('));
 const displayMarker = (e) => {
     e.preventDefault();
+    elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+        '';
     const { lat, lng } = mapEvent.latlng;
     L.marker([lat, lng])
         .addTo(map)
@@ -56,4 +58,8 @@ const displayMarker = (e) => {
         .setPopupContent('Workout')
         .openPopup();
 };
+const changeWorkoutType = () => {
+    [elements.inputElevation, elements.inputCadence].forEach(input => input.closest('.form__row').classList.toggle('form__row--hidden'));
+};
 elements.form.addEventListener('submit', displayMarker);
+elements.inputType.addEventListener('change', changeWorkoutType);

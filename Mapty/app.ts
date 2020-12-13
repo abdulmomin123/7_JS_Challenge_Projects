@@ -82,9 +82,14 @@ if (navigator.geolocation)
 const displayMarker = (e: Event) => {
   e.preventDefault();
 
+  // Clearing the input fields
+  elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+    '';
+
   // Getting the latitude and longitude from the click
   const { lat, lng } = mapEvent.latlng;
 
+  // Displaying the marker on the clicked spot
   L.marker([lat, lng])
     .addTo(map)
     .bindPopup(
@@ -100,5 +105,18 @@ const displayMarker = (e: Event) => {
     .openPopup();
 };
 
+// Changes the workout type
+const changeWorkoutType = () => {
+  [elements.inputElevation, elements.inputCadence].forEach(input =>
+    (input.closest('.form__row') as HTMLDivElement).classList.toggle(
+      'form__row--hidden'
+    )
+  );
+};
+
 // Events Listeners
+// Adding a new workout
 elements.form.addEventListener('submit', displayMarker);
+
+// Changing the workout type
+elements.inputType.addEventListener('change', changeWorkoutType);
