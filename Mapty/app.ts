@@ -18,39 +18,98 @@ const elements = {
 };
 
 // Global variables and classes
-let map: any, mapEvent: any;
-
-class App {
-  constructor() {
-    //
-  }
-
-  private getPosition() {
-    //
-  }
-
-  private loadMap() {
-    //
-  }
-
-  private showForm() {
-    //
-  }
-
-  private toggleElevationField() {
-    //
-  }
-
-  private newWorkout() {
-    //
-  }
-}
+// the leaflet library
 declare const L: {
   map: Function;
   tileLayer: Function;
   marker: Function;
   popup: Function;
 };
+
+// main app class
+class App {
+  private map: any;
+  private mapEvent: any;
+
+  constructor() {
+    this.getPosition();
+
+    // Events Listeners
+    // Adding a new workout
+    elements.form.addEventListener('submit', this.newWorkout.bind(this));
+
+    // Changing the workout type
+    elements.inputType.addEventListener(
+      'change',
+      this.toggleElevationField.bind(this)
+    );
+  }
+
+  private getPosition() {
+    // Get users position
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(this.loadMap.bind(this), () =>
+        alert('Could not get your location : (')
+      );
+  }
+
+  private loadMap(position: any) {
+    const { latitude, longitude } = position.coords;
+
+    // Displaying the map on users coords
+    this.map = L.map('map').setView([latitude, longitude], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.map);
+
+    // Adding a click handler on the map
+    this.map.on('click', this.showForm.bind(this));
+  }
+
+  private showForm(e: Event) {
+    this.mapEvent = e;
+
+    // Displaying the form
+    elements.form.classList.remove('hidden');
+    elements.inputDistance.focus();
+  }
+
+  private toggleElevationField() {
+    [elements.inputElevation, elements.inputCadence].forEach(input =>
+      (input.closest('.form__row') as HTMLDivElement).classList.toggle(
+        'form__row--hidden'
+      )
+    );
+  }
+
+  private newWorkout(e: Event) {
+    e.preventDefault();
+
+    // Clearing the input fields
+    elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+      '';
+
+    // Getting the latitude and longitude from the click
+    const { lat, lng } = this.mapEvent.latlng;
+
+    // Displaying the marker on the clicked spot
+    L.marker([lat, lng])
+      .addTo(this.map)
+      .bindPopup(
+        L.popup({
+          maxWidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        })
+      )
+      .setPopupContent('Workout')
+      .openPopup();
+  }
+}
 
 const months = [
   'January',
@@ -67,73 +126,7 @@ const months = [
   'December',
 ];
 
+// App
+const app = new App();
+
 // Functions
-// Get users position and display the map
-if (navigator.geolocation)
-  navigator.geolocation.getCurrentPosition(
-    position => {
-      const { latitude, longitude } = position.coords;
-      const coords = [latitude, longitude];
-
-      // Displaying the map on users coords
-      map = L.map('map').setView(coords, 12);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(map);
-
-      // Adding a click handler on the map
-      map.on('click', (e: any) => {
-        mapEvent = e;
-
-        // Displaying the form
-        elements.form.classList.remove('hidden');
-        elements.inputDistance.focus();
-      });
-    },
-    _err => alert('Could not get your location : (')
-  );
-
-// Displays the marker
-const displayMarker = (e: Event) => {
-  e.preventDefault();
-
-  // Clearing the input fields
-  elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
-    '';
-
-  // Getting the latitude and longitude from the click
-  const { lat, lng } = mapEvent.latlng;
-
-  // Displaying the marker on the clicked spot
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxWidth: 250,
-        minWidth: 100,
-        autoClose: false,
-        closeOnClick: false,
-        className: 'running-popup',
-      })
-    )
-    .setPopupContent('Workout')
-    .openPopup();
-};
-
-// Changes the workout type
-const changeWorkoutType = () => {
-  [elements.inputElevation, elements.inputCadence].forEach(input =>
-    (input.closest('.form__row') as HTMLDivElement).classList.toggle(
-      'form__row--hidden'
-    )
-  );
-};
-
-// Events Listeners
-// Adding a new workout
-elements.form.addEventListener('submit', displayMarker);
-
-// Changing the workout type
-elements.inputType.addEventListener('change', changeWorkoutType);
