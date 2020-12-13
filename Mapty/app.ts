@@ -66,6 +66,8 @@ class Running extends Workout {
 
 // cycling class
 class Cycling extends Workout {
+  speed: number;
+
   constructor(
     public coords: { latitude: number; longitude: number },
     public distance: number,
@@ -74,6 +76,14 @@ class Cycling extends Workout {
   ) {
     super(coords, distance, duration);
     this.elevationGain = elevationGain;
+
+    this.speed = 0;
+    this.calcSpeed();
+  }
+
+  calcSpeed() {
+    // km/hour
+    this.speed = this.distance / this.duration;
   }
 }
 
