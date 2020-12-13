@@ -10,6 +10,7 @@ const elements = {
 };
 class Workout {
     constructor(coords, distance, duration) {
+        this.date = new Date();
         this.coords = coords;
         this.distance = distance;
         this.duration = duration;

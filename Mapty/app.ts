@@ -28,6 +28,7 @@ declare const L: {
 
 // workout class
 class Workout {
+  date: Date;
   coords: { latitude: number; longitude: number };
   distance: number;
   duration: number;
@@ -37,6 +38,7 @@ class Workout {
     distance: number,
     duration: number
   ) {
+    this.date = new Date();
     this.coords = coords;
     this.distance = distance;
     this.duration = duration;
