@@ -31,10 +31,6 @@ if (navigator.geolocation)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
-        L.marker(coords)
-            .addTo(map)
-            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-            .openPopup();
         map.on('click', (e) => {
             mapEvent = e;
             elements.form.classList.remove('hidden');

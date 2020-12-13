@@ -23,12 +23,8 @@ let map: any, mapEvent: any;
 declare const L: {
   map: Function;
   tileLayer: Function;
-  addTo: Function;
-  bindPopup: Function;
   marker: Function;
   popup: Function;
-  setPopupContent: Function;
-  openPopup: Function;
 };
 
 const months = [
@@ -54,17 +50,13 @@ if (navigator.geolocation)
       const { latitude, longitude } = position.coords;
       const coords = [latitude, longitude];
 
+      // Displaying the map on users coords
       map = L.map('map').setView(coords, 12);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
-
-      L.marker(coords)
-        .addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
 
       // Adding a click handler on the map
       map.on('click', (e: any) => {
