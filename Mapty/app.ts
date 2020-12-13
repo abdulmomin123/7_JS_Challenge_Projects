@@ -26,6 +26,23 @@ declare const L: {
   popup: Function;
 };
 
+// workout class
+class Workout {
+  coords: { latitude: number; longitude: number };
+  distance: number;
+  duration: number;
+
+  constructor(
+    coords: { latitude: number; longitude: number },
+    distance: number,
+    duration: number
+  ) {
+    this.coords = coords;
+    this.distance = distance;
+    this.duration = duration;
+  }
+}
+
 // main app class
 class App {
   private map: any;
@@ -39,10 +56,7 @@ class App {
     elements.form.addEventListener('submit', this.newWorkout.bind(this));
 
     // Changing the workout type
-    elements.inputType.addEventListener(
-      'change',
-      this.toggleElevationField.bind(this)
-    );
+    elements.inputType.addEventListener('change', this.toggleElevationField);
   }
 
   private getPosition() {

@@ -8,11 +8,18 @@ const elements = {
     inputCadence: document.querySelector('.form__input--cadence'),
     inputElevation: document.querySelector('.form__input--elevation'),
 };
+class Workout {
+    constructor(coords, distance, duration) {
+        this.coords = coords;
+        this.distance = distance;
+        this.duration = duration;
+    }
+}
 class App {
     constructor() {
         this.getPosition();
         elements.form.addEventListener('submit', this.newWorkout.bind(this));
-        elements.inputType.addEventListener('change', this.toggleElevationField.bind(this));
+        elements.inputType.addEventListener('change', this.toggleElevationField);
     }
     getPosition() {
         if (navigator.geolocation)
