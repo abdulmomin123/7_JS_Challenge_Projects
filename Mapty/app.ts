@@ -60,7 +60,7 @@ class Workout {
 
 // running class
 class Running extends Workout {
-  pace: number = 0;
+  pace!: number;
   type = 'running';
   description = `${this.type[0].toUpperCase() + this.type.slice(1)} on ${
     months[this.date.getMonth()]
@@ -86,7 +86,7 @@ class Running extends Workout {
 
 // cycling class
 class Cycling extends Workout {
-  speed: number = 0;
+  speed!: number;
   type = 'cycling';
   description = `${this.type[0].toUpperCase() + this.type.slice(1)} on ${
     months[this.date.getMonth()]
@@ -260,12 +260,14 @@ class App {
       html += `
             <div class="workout__details">
             <span class="workout__icon">⚡️</span>
-            <span class="workout__value">${workout.pace}</span>
+            <span class="workout__value">${(workout as Running).pace.toFixed(
+              1
+            )}</span>
             <span class="workout__unit">min/km</span>
           </div>
           <div class="workout__details">
             <span class="workout__icon">🦶🏼</span>
-            <span class="workout__value">${workout.cadence}</span>
+            <span class="workout__value">${(workout as Running).cadence}</span>
             <span class="workout__unit">spm</span>
           </div>
         </li>
@@ -274,18 +276,22 @@ class App {
       html += `
           <div class="workout__details">
             <span class="workout__icon">⚡️</span>
-            <span class="workout__value">${workout.speed}</span>
+            <span class="workout__value">${(workout as Cycling).speed.toFixed(
+              1
+            )}</span>
             <span class="workout__unit">km/h</span>
           </div>
           <div class="workout__details">
             <span class="workout__icon">⛰</span>
-            <span class="workout__value">${workout.elevationGain}</span>
+            <span class="workout__value">${
+              (workout as Cycling).elevationGain
+            }</span>
             <span class="workout__unit">m</span>
           </div>
         </li>
     `;
 
-    console.log(html);
+    elements.form.insertAdjacentHTML('afterend', html);
   }
 }
 

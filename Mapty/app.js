@@ -150,25 +150,31 @@ class App {
             html += `
             <div class="workout__details">
             <span class="workout__icon">⚡️</span>
-            <span class="workout__value">4.6</span>
+            <span class="workout__value">${workout.pace.toFixed(1)}</span>
             <span class="workout__unit">min/km</span>
           </div>
           <div class="workout__details">
             <span class="workout__icon">🦶🏼</span>
-            <span class="workout__value">178</span>
+            <span class="workout__value">${workout.cadence}</span>
             <span class="workout__unit">spm</span>
           </div>
         </li>
     `;
         else
             html += `
-            <div class="workout__details">
+          <div class="workout__details">
+            <span class="workout__icon">⚡️</span>
+            <span class="workout__value">${workout.speed.toFixed(1)}</span>
+            <span class="workout__unit">km/h</span>
+          </div>
+          <div class="workout__details">
             <span class="workout__icon">⛰</span>
-            <span class="workout__value">223</span>
+            <span class="workout__value">${workout.elevationGain}</span>
             <span class="workout__unit">m</span>
           </div>
+        </li>
     `;
-        console.log(html);
+        elements.form.insertAdjacentHTML('afterend', html);
     }
 }
 const app = new App();
