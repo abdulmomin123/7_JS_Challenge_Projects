@@ -125,6 +125,9 @@ class App {
     // Adding a new workout
     elements.form.addEventListener('submit', this.newWorkout.bind(this));
 
+    // Get the workouts from local storage (if any)
+    this.getLocalStorage();
+
     // Changing the workout type
     elements.inputType.addEventListener('change', this.toggleElevationField);
 
@@ -335,6 +338,12 @@ class App {
 
   private setLocalStorage() {
     localStorage.setItem('workouts', JSON.stringify(this.workouts));
+  }
+
+  private getLocalStorage() {
+    if (!localStorage.getItem('workouts')) return;
+
+    //
   }
 }
 
