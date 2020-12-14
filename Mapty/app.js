@@ -92,7 +92,7 @@ class App {
         }
         if (type === 'cycling') {
             const elevationGain = +elements.inputElevation.value;
-            if (!inputValidator(distance, duration, elevationGain))
+            if (!inputValidator(distance, duration) || !elevationGain)
                 return alert('Inputs have to be positive numbers!');
         }
         L.marker([lat, lng])

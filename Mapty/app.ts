@@ -180,7 +180,7 @@ class App {
       const elevationGain = +elements.inputElevation.value;
 
       // check if the data is valid
-      if (!inputValidator(distance, duration, elevationGain))
+      if (!inputValidator(distance, duration) || !elevationGain)
         return alert('Inputs have to be positive numbers!');
     }
 
