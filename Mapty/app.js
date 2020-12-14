@@ -89,6 +89,11 @@ class App {
         elements.form.classList.remove('hidden');
         elements.inputDistance.focus();
     }
+    hideForm() {
+        elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+            '';
+        elements.form.classList.add('hidden');
+    }
     toggleElevationField() {
         [elements.inputElevation, elements.inputCadence].forEach(input => input.closest('.form__row').classList.toggle('form__row--hidden'));
     }
@@ -115,8 +120,7 @@ class App {
         this.workouts.push(workout);
         this.renderWorkoutMarker(workout);
         this.renderWorkout(workout);
-        elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
-            '';
+        this.hideForm();
     }
     renderWorkoutMarker(workout) {
         L.marker(workout.coords)

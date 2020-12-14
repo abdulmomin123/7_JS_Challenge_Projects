@@ -159,6 +159,13 @@ class App {
     elements.inputDistance.focus();
   }
 
+  private hideForm() {
+    elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+      '';
+
+    elements.form.classList.add('hidden');
+  }
+
   private toggleElevationField() {
     [elements.inputElevation, elements.inputCadence].forEach(input =>
       (input.closest('.form__row') as HTMLDivElement).classList.toggle(
@@ -218,8 +225,7 @@ class App {
     this.renderWorkout(workout!);
 
     // hide the form and clear the input fields
-    elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
-      '';
+    this.hideForm();
   }
 
   private renderWorkoutMarker(workout: Running | Cycling) {
