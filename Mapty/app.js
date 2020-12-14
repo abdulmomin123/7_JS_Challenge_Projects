@@ -92,7 +92,9 @@ class App {
     hideForm() {
         elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
             '';
+        elements.form.style.display = 'none';
         elements.form.classList.add('hidden');
+        setTimeout(() => (elements.form.style.display = 'grid'), 1000);
     }
     toggleElevationField() {
         [elements.inputElevation, elements.inputCadence].forEach(input => input.closest('.form__row').classList.toggle('form__row--hidden'));

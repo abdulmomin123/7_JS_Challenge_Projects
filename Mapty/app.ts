@@ -163,7 +163,9 @@ class App {
     elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
       '';
 
+    elements.form.style.display = 'none';
     elements.form.classList.add('hidden');
+    setTimeout(() => (elements.form.style.display = 'grid'), 1000);
   }
 
   private toggleElevationField() {
