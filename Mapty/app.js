@@ -80,8 +80,6 @@ class App {
     }
     newWorkout(e) {
         e.preventDefault();
-        elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
-            '';
         const { lat, lng } = this.mapEvent.latlng;
         L.marker([lat, lng])
             .addTo(this.map)
@@ -94,6 +92,8 @@ class App {
         }))
             .setPopupContent('Workout')
             .openPopup();
+        elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+            '';
     }
 }
 const months = [

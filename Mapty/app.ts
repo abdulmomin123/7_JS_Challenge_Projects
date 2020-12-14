@@ -153,6 +153,9 @@ class App {
   private newWorkout(e: Event) {
     e.preventDefault();
 
+    // Getting the latitude and longitude from the click
+    const { lat, lng } = this.mapEvent.latlng;
+
     // Get data form the form
 
     // check if the data is valid
@@ -161,18 +164,7 @@ class App {
 
     // add the object to the workout array
 
-    // render the workout on the map
-
-    // render the workout on the list
-
-    // hide the form and clear the input fields
-    elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
-      '';
-
-    // Getting the latitude and longitude from the click
-    const { lat, lng } = this.mapEvent.latlng;
-
-    // Displaying the marker on the clicked spot
+    // render the workout on the map as a marker
     L.marker([lat, lng])
       .addTo(this.map)
       .bindPopup(
@@ -186,6 +178,12 @@ class App {
       )
       .setPopupContent('Workout')
       .openPopup();
+
+    // render the workout on the list
+
+    // hide the form and clear the input fields
+    elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+      '';
   }
 }
 
