@@ -8,6 +8,20 @@ const elements = {
     inputCadence: document.querySelector('.form__input--cadence'),
     inputElevation: document.querySelector('.form__input--elevation'),
 };
+const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+];
 class Workout {
     constructor(coords, distance, duration) {
         this.coords = coords;
@@ -25,6 +39,7 @@ class Running extends Workout {
         this.duration = duration;
         this.cadence = cadence;
         this.type = 'running';
+        this.description = `${this.type[0].toUpperCase() + this.type.slice(1)} on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
         this.cadence = cadence;
         this.calcPace();
     }
@@ -41,6 +56,7 @@ class Cycling extends Workout {
         this.duration = duration;
         this.elevationGain = elevationGain;
         this.type = 'cycling';
+        this.description = `${this.type[0].toUpperCase() + this.type.slice(1)} on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
         this.elevationGain = elevationGain;
         this.calcSpeed();
     }
@@ -116,21 +132,38 @@ class App {
             .openPopup();
     }
     renderWorkout(workout) {
-        console.log(workout);
+        let html = `
+        <li class="workout workout--${workout.type}" data-id="${workout.id}">
+          <h2 class="workout__title">${workout.description}</h2>
+          <div class="workout__details">
+            <span class="workout__icon">${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'}</span>
+            <span class="workout__value">${workout.distance}</span>
+            <span class="workout__unit">km</span>
+          </div>
+          <div class="workout__details">
+            <span class="workout__icon">⏱</span>
+            <span class="workout__value">${workout.duration}</span>
+            <span class="workout__unit">min</span>
+          </div>
+    `;
+        if (workout.type === 'running')
+            html += `
+            <div class="workout__details">
+            <span class="workout__icon">🦶🏼</span>
+            <span class="workout__value">178</span>
+            <span class="workout__unit">spm</span>
+          </div>
+        </li>
+    `;
+        else
+            html += `
+            <div class="workout__details">
+            <span class="workout__icon">⛰</span>
+            <span class="workout__value">223</span>
+            <span class="workout__unit">m</span>
+          </div>
+    `;
+        console.log(html);
     }
 }
-const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-];
 const app = new App();

@@ -28,6 +28,21 @@ declare const L: {
 
 type Coords = [number, number];
 
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 // workout class
 class Workout {
   id: string;
@@ -47,6 +62,9 @@ class Workout {
 class Running extends Workout {
   pace!: number;
   type = 'running';
+  description = `${this.type[0].toUpperCase() + this.type.slice(1)} on ${
+    months[this.date.getMonth()]
+  } ${this.date.getDate()}`;
 
   constructor(
     public coords: Coords,
@@ -70,6 +88,9 @@ class Running extends Workout {
 class Cycling extends Workout {
   speed!: number;
   type = 'cycling';
+  description = `${this.type[0].toUpperCase() + this.type.slice(1)} on ${
+    months[this.date.getMonth()]
+  } ${this.date.getDate()}`;
 
   constructor(
     public coords: Coords,
@@ -218,9 +239,9 @@ class App {
   }
 
   private renderWorkout(workout: Running | Cycling) {
-    const html = `
+    let html = `
         <li class="workout workout--${workout.type}" data-id="${workout.id}">
-          <h2 class="workout__title">Running on April 14</h2>
+          <h2 class="workout__title">${workout.description}</h2>
           <div class="workout__details">
             <span class="workout__icon">${
               workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
@@ -235,24 +256,27 @@ class App {
           </div>
     `;
 
-    console.log(workout);
+    if (workout.type === 'running')
+      html += `
+            <div class="workout__details">
+            <span class="workout__icon">🦶🏼</span>
+            <span class="workout__value">178</span>
+            <span class="workout__unit">spm</span>
+          </div>
+        </li>
+    `;
+    else
+      html += `
+            <div class="workout__details">
+            <span class="workout__icon">⛰</span>
+            <span class="workout__value">223</span>
+            <span class="workout__unit">m</span>
+          </div>
+    `;
+
+    console.log(html);
   }
 }
-
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
 
 // App
 const app = new App();
