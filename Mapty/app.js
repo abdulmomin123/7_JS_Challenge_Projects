@@ -86,6 +86,9 @@ class App {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(this.map);
         this.map.on('click', this.showForm.bind(this));
+        this.workouts.forEach(workout => {
+            this.renderWorkoutMarker(workout);
+        });
     }
     showForm(e) {
         this.mapEvent = e;
@@ -206,6 +209,9 @@ class App {
         if (!data)
             return;
         this.workouts = data;
+        this.workouts.forEach(workout => {
+            this.renderWorkout(workout);
+        });
     }
 }
 const app = new App();

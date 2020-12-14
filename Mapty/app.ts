@@ -159,6 +159,10 @@ class App {
 
     // Adding a click handler on the map
     this.map.on('click', this.showForm.bind(this));
+
+    this.workouts.forEach(workout => {
+      this.renderWorkoutMarker(workout as Running | Cycling);
+    });
   }
 
   private showForm(e: Event) {
@@ -348,7 +352,7 @@ class App {
     this.workouts = data;
 
     this.workouts.forEach(workout => {
-      //
+      this.renderWorkout(workout as Running | Cycling);
     });
   }
 }
