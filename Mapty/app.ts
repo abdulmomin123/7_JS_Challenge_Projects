@@ -114,6 +114,7 @@ class Cycling extends Workout {
 /////////////////////////////// main app class
 class App {
   private map: any;
+  private mapZoomLevel = 12;
   private mapEvent: any;
   private workouts: Workout[] = [];
 
@@ -146,7 +147,7 @@ class App {
     const { latitude, longitude } = position.coords;
 
     // Displaying the map on users coords
-    this.map = L.map('map').setView([latitude, longitude], 12);
+    this.map = L.map('map').setView([latitude, longitude], this.mapZoomLevel);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
@@ -321,7 +322,12 @@ class App {
       workout => workout.id === workoutEl.dataset.id
     )?.coords;
 
-    this.map.setView(workoutCoords, 12);
+    this.map.setView(workoutCoords, this.mapZoomLevel, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
+    });
   }
 }
 
