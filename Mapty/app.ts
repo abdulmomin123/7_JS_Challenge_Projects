@@ -194,13 +194,14 @@ class App {
     this.renderWorkoutMarker(workout!);
 
     // render the workout on the list
+    this.renderWorkout(workout!);
 
     // hide the form and clear the input fields
     elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
       '';
   }
 
-  renderWorkoutMarker(workout: Running | Cycling) {
+  private renderWorkoutMarker(workout: Running | Cycling) {
     L.marker(workout.coords)
       .addTo(this.map)
       .bindPopup(
@@ -214,6 +215,10 @@ class App {
       )
       .setPopupContent(`${workout.distance}`)
       .openPopup();
+  }
+
+  private renderWorkout(workout: Running | Cycling) {
+    console.log(workout);
   }
 }
 

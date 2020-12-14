@@ -98,6 +98,7 @@ class App {
         }
         this.workouts.push(workout);
         this.renderWorkoutMarker(workout);
+        this.renderWorkout(workout);
         elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
             '';
     }
@@ -113,6 +114,9 @@ class App {
         }))
             .setPopupContent(`${workout.distance}`)
             .openPopup();
+    }
+    renderWorkout(workout) {
+        console.log(workout);
     }
 }
 const months = [
