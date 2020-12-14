@@ -125,6 +125,7 @@ class App {
         this.renderWorkoutMarker(workout);
         this.renderWorkout(workout);
         this.hideForm();
+        this.setLocalStorage();
     }
     renderWorkoutMarker(workout) {
         L.marker(workout.coords)
@@ -195,6 +196,9 @@ class App {
                 duration: 1,
             },
         });
+    }
+    setLocalStorage() {
+        localStorage.setItem('workouts', JSON.stringify(this.workouts));
     }
 }
 const app = new App();

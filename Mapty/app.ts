@@ -235,6 +235,9 @@ class App {
 
     // hide the form and clear the input fields
     this.hideForm();
+
+    // save to local storage
+    this.setLocalStorage();
   }
 
   private renderWorkoutMarker(workout: Running | Cycling) {
@@ -328,6 +331,10 @@ class App {
         duration: 1,
       },
     });
+  }
+
+  private setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.workouts));
   }
 }
 
