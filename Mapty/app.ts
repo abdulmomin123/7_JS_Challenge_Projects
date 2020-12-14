@@ -341,9 +341,15 @@ class App {
   }
 
   private getLocalStorage() {
-    if (!localStorage.getItem('workouts')) return;
+    const data = JSON.parse(localStorage.getItem('workouts')!);
 
-    //
+    if (!data) return;
+
+    this.workouts = data;
+
+    this.workouts.forEach(workout => {
+      //
+    });
   }
 }
 
