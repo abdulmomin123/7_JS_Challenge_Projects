@@ -134,7 +134,7 @@ class App {
             closeOnClick: false,
             className: `${workout.type}-popup`,
         }))
-            .setPopupContent(`${workout.distance}`)
+            .setPopupContent(`${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`)
             .openPopup();
     }
     renderWorkout(workout) {
