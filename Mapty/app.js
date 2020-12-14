@@ -25,7 +25,6 @@ class Running extends Workout {
         this.duration = duration;
         this.cadence = cadence;
         this.cadence = cadence;
-        this.pace = 0;
         this.calcPace();
     }
     calcPace() {
@@ -41,7 +40,6 @@ class Cycling extends Workout {
         this.duration = duration;
         this.elevationGain = elevationGain;
         this.elevationGain = elevationGain;
-        this.speed = 0;
         this.calcSpeed();
     }
     calcSpeed() {
@@ -49,9 +47,6 @@ class Cycling extends Workout {
         return this.speed;
     }
 }
-const cy = new Cycling([1, 2], 11, 11, 11);
-const wk = new Running([1, 2], 11, 11, 11);
-console.log(cy, wk);
 class App {
     constructor() {
         this.getPosition();
@@ -87,13 +82,17 @@ class App {
         const duration = +elements.inputDuration.value;
         if (type === 'running') {
             const cadence = +elements.inputCadence.value;
-            if (!inputValidator(distance, duration, cadence))
+            if (!inputValidator(distance, duration) || !cadence)
                 return alert('Inputs have to be positive numbers!');
+            const workout = new Running([lat, lng], distance, duration, cadence);
+            this.workouts.push(workout);
         }
         if (type === 'cycling') {
             const elevationGain = +elements.inputElevation.value;
             if (!inputValidator(distance, duration) || !elevationGain)
                 return alert('Inputs have to be positive numbers!');
+            const workout = new Cycling([lat, lng], distance, duration, elevationGain);
+            this.workouts.push(workout);
         }
         L.marker([lat, lng])
             .addTo(this.map)

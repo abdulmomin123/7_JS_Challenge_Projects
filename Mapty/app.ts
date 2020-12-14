@@ -45,7 +45,7 @@ class Workout {
 
 // running class
 class Running extends Workout {
-  pace: number;
+  pace!: number;
 
   constructor(
     public coords: Coords,
@@ -55,7 +55,6 @@ class Running extends Workout {
   ) {
     super(coords, distance, duration);
     this.cadence = cadence;
-    this.pace = 0;
     this.calcPace();
   }
 
@@ -68,7 +67,7 @@ class Running extends Workout {
 
 // cycling class
 class Cycling extends Workout {
-  speed: number;
+  speed!: number;
 
   constructor(
     public coords: Coords,
@@ -79,7 +78,6 @@ class Cycling extends Workout {
     super(coords, distance, duration);
     this.elevationGain = elevationGain;
 
-    this.speed = 0;
     this.calcSpeed();
   }
 
@@ -90,15 +88,11 @@ class Cycling extends Workout {
   }
 }
 
-const cy = new Cycling([1, 2], 11, 11, 11);
-const wk = new Running([1, 2], 11, 11, 11);
-
-console.log(cy, wk);
-
 /////////////////////////////// main app class
 class App {
   private map: any;
   private mapEvent: any;
+  protected workouts!: Workout[];
 
   constructor() {
     this.getPosition();
@@ -172,8 +166,14 @@ class App {
       const cadence = +elements.inputCadence.value;
 
       // check if the data is valid
-      if (!inputValidator(distance, duration, cadence))
+      if (!inputValidator(distance, duration) || !cadence)
         return alert('Inputs have to be positive numbers!');
+
+      // create the class
+      const workout = new Running([lat, lng], distance, duration, cadence);
+
+      // add the object to the workout array
+      this.workouts.push(workout);
     }
 
     if (type === 'cycling') {
@@ -182,9 +182,18 @@ class App {
       // check if the data is valid
       if (!inputValidator(distance, duration) || !elevationGain)
         return alert('Inputs have to be positive numbers!');
-    }
 
-    // add the object to the workout array
+      // create the class
+      const workout = new Cycling(
+        [lat, lng],
+        distance,
+        duration,
+        elevationGain
+      );
+
+      // add the object to the workout array
+      this.workouts.push(workout);
+    }
 
     // render the workout on the map as a marker
     L.marker([lat, lng])
