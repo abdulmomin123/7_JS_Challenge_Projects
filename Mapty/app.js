@@ -188,7 +188,7 @@ class App {
         if (!workoutEl)
             return;
         const workoutCoords = this.workouts.find(workout => workout.id === workoutEl.dataset.id)?.coords;
-        this.map = L.map('map').setView(workoutCoords, 12);
+        this.map.setView(workoutCoords, 12);
     }
 }
 const app = new App();

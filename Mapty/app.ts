@@ -321,7 +321,7 @@ class App {
       workout => workout.id === workoutEl.dataset.id
     )?.coords;
 
-    this.map = L.map('map').setView(workoutCoords, 12);
+    this.map.setView(workoutCoords, 12);
   }
 }
 
