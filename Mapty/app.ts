@@ -126,6 +126,12 @@ class App {
 
     // Changing the workout type
     elements.inputType.addEventListener('change', this.toggleElevationField);
+
+    // Clicking on the workout li
+    elements.containerWorkouts.addEventListener(
+      'click',
+      this.moveToPopup.bind(this)
+    );
   }
 
   private getPosition() {
@@ -302,6 +308,20 @@ class App {
     `;
 
     elements.form.insertAdjacentHTML('afterend', html);
+  }
+
+  private moveToPopup(e: Event) {
+    const workoutEl = (e.target as HTMLElement).closest(
+      '.workout'
+    ) as HTMLElement;
+
+    if (!workoutEl) return;
+
+    const workoutCoords = this.workouts.find(
+      workout => workout.id === workoutEl.dataset.id
+    )?.coords;
+
+    this.map = L.map('map').setView(workoutCoords, 12);
   }
 }
 
