@@ -24,6 +24,7 @@ class Running extends Workout {
         this.distance = distance;
         this.duration = duration;
         this.cadence = cadence;
+        this.type = 'running';
         this.cadence = cadence;
         this.calcPace();
     }
@@ -39,6 +40,7 @@ class Cycling extends Workout {
         this.distance = distance;
         this.duration = duration;
         this.elevationGain = elevationGain;
+        this.type = 'cycling';
         this.elevationGain = elevationGain;
         this.calcSpeed();
     }
@@ -95,19 +97,22 @@ class App {
             workout = new Cycling([lat, lng], distance, duration, elevationGain);
         }
         this.workouts.push(workout);
-        L.marker([lat, lng])
+        this.renderWorkoutMarker(workout);
+        elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
+            '';
+    }
+    renderWorkoutMarker(workout) {
+        L.marker(workout.coords)
             .addTo(this.map)
             .bindPopup(L.popup({
             maxWidth: 250,
             minWidth: 100,
             autoClose: false,
             closeOnClick: false,
-            className: 'running-popup',
+            className: `${workout.type}-popup`,
         }))
-            .setPopupContent('Workout')
+            .setPopupContent(workout.distance)
             .openPopup();
-        elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
-            '';
     }
 }
 const months = [
