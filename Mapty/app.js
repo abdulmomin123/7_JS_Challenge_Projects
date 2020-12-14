@@ -49,6 +49,7 @@ class Cycling extends Workout {
 }
 class App {
     constructor() {
+        this.workouts = [];
         this.getPosition();
         elements.form.addEventListener('submit', this.newWorkout.bind(this));
         elements.inputType.addEventListener('change', this.toggleElevationField);
@@ -80,20 +81,20 @@ class App {
         const type = elements.inputType.value;
         const distance = +elements.inputDistance.value;
         const duration = +elements.inputDuration.value;
+        let workout;
         if (type === 'running') {
             const cadence = +elements.inputCadence.value;
             if (!inputValidator(distance, duration) || !cadence)
                 return alert('Inputs have to be positive numbers!');
-            const workout = new Running([lat, lng], distance, duration, cadence);
-            this.workouts.push(workout);
+            workout = new Running([lat, lng], distance, duration, cadence);
         }
         if (type === 'cycling') {
             const elevationGain = +elements.inputElevation.value;
             if (!inputValidator(distance, duration) || !elevationGain)
                 return alert('Inputs have to be positive numbers!');
-            const workout = new Cycling([lat, lng], distance, duration, elevationGain);
-            this.workouts.push(workout);
+            workout = new Cycling([lat, lng], distance, duration, elevationGain);
         }
+        this.workouts.push(workout);
         L.marker([lat, lng])
             .addTo(this.map)
             .bindPopup(L.popup({

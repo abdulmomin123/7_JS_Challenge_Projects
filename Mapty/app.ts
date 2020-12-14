@@ -92,7 +92,7 @@ class Cycling extends Workout {
 class App {
   private map: any;
   private mapEvent: any;
-  protected workouts!: Workout[];
+  private workouts: Workout[] = [];
 
   constructor() {
     this.getPosition();
@@ -160,6 +160,7 @@ class App {
       | 'cycling';
     const distance = +elements.inputDistance.value;
     const duration = +elements.inputDuration.value;
+    let workout: Running | Cycling;
 
     // create new running or cycling object based on workout type
     if (type === 'running') {
@@ -170,10 +171,7 @@ class App {
         return alert('Inputs have to be positive numbers!');
 
       // create the class
-      const workout = new Running([lat, lng], distance, duration, cadence);
-
-      // add the object to the workout array
-      this.workouts.push(workout);
+      workout = new Running([lat, lng], distance, duration, cadence);
     }
 
     if (type === 'cycling') {
@@ -184,16 +182,11 @@ class App {
         return alert('Inputs have to be positive numbers!');
 
       // create the class
-      const workout = new Cycling(
-        [lat, lng],
-        distance,
-        duration,
-        elevationGain
-      );
-
-      // add the object to the workout array
-      this.workouts.push(workout);
+      workout = new Cycling([lat, lng], distance, duration, elevationGain);
     }
+
+    // add the object to the workout array
+    this.workouts.push(workout!);
 
     // render the workout on the map as a marker
     L.marker([lat, lng])
