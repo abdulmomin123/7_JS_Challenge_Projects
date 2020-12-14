@@ -153,6 +153,10 @@ class App {
   private newWorkout(e: Event) {
     e.preventDefault();
 
+    // form validator
+    const inputValidator = (...inputs: number[]) =>
+      inputs.every(input => input && input > 0);
+
     // Getting the latitude and longitude from the click
     const { lat, lng } = this.mapEvent.latlng;
 
@@ -168,7 +172,7 @@ class App {
       const cadence = +elements.inputCadence.value;
 
       // check if the data is valid
-      if (!distance || !duration || !cadence)
+      if (!inputValidator(distance, duration, cadence))
         return alert('Inputs have to be positive numbers!');
     }
 
@@ -176,7 +180,7 @@ class App {
       const elevationGain = +elements.inputElevation.value;
 
       // check if the data is valid
-      if (!distance || !duration || !elevationGain)
+      if (!inputValidator(distance, duration, elevationGain))
         return alert('Inputs have to be positive numbers!');
     }
 
