@@ -355,6 +355,10 @@ class App {
       this.renderWorkout(workout as Running | Cycling);
     });
   }
+
+  private reset() {
+    //
+  }
 }
 
 // App
