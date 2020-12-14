@@ -153,7 +153,19 @@ class App {
   private newWorkout(e: Event) {
     e.preventDefault();
 
-    // Clearing the input fields
+    // Get data form the form
+
+    // check if the data is valid
+
+    // create new running or cycling object based on workout type
+
+    // add the object to the workout array
+
+    // render the workout on the map
+
+    // render the workout on the list
+
+    // hide the form and clear the input fields
     elements.inputDistance.value = elements.inputCadence.value = elements.inputDuration.value = elements.inputElevation.value =
       '';
 
