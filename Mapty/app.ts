@@ -163,15 +163,21 @@ class App {
     const distance = +elements.inputDistance.value;
     const duration = +elements.inputDuration.value;
 
-    // check if the data is valid
-
     // create new running or cycling object based on workout type
     if (type === 'running') {
       const cadence = +elements.inputCadence.value;
+
+      // check if the data is valid
+      if (!distance || !duration || !cadence)
+        return alert('Inputs have to be positive numbers!');
     }
 
     if (type === 'cycling') {
       const elevationGain = +elements.inputElevation.value;
+
+      // check if the data is valid
+      if (!distance || !duration || !elevationGain)
+        return alert('Inputs have to be positive numbers!');
     }
 
     // add the object to the workout array

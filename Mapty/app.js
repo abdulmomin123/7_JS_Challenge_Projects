@@ -81,6 +81,19 @@ class App {
     newWorkout(e) {
         e.preventDefault();
         const { lat, lng } = this.mapEvent.latlng;
+        const type = elements.inputType.value;
+        const distance = +elements.inputDistance.value;
+        const duration = +elements.inputDuration.value;
+        if (type === 'running') {
+            const cadence = +elements.inputCadence.value;
+            if (!distance || !duration || !cadence)
+                return alert('Inputs have to be positive numbers!');
+        }
+        if (type === 'cycling') {
+            const elevationGain = +elements.inputElevation.value;
+            if (!distance || !duration || !elevationGain)
+                return alert('Inputs have to be positive numbers!');
+        }
         L.marker([lat, lng])
             .addTo(this.map)
             .bindPopup(L.popup({
