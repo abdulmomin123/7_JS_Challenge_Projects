@@ -157,10 +157,22 @@ class App {
     const { lat, lng } = this.mapEvent.latlng;
 
     // Get data form the form
+    const type: 'running' | 'cycling' = elements.inputType.value as
+      | 'running'
+      | 'cycling';
+    const distance = +elements.inputDistance.value;
+    const duration = +elements.inputDuration.value;
 
     // check if the data is valid
 
     // create new running or cycling object based on workout type
+    if (type === 'running') {
+      const cadence = +elements.inputCadence.value;
+    }
+
+    if (type === 'cycling') {
+      const elevationGain = +elements.inputElevation.value;
+    }
 
     // add the object to the workout array
 
