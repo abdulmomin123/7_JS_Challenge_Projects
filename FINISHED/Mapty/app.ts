@@ -364,5 +364,3 @@ class App {
 
 // App
 const app = new App();
-
-// Functions
