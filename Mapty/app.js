@@ -213,5 +213,9 @@ class App {
             this.renderWorkout(workout);
         });
     }
+    _reset() {
+        localStorage.removeItem('workouts');
+        location.reload();
+    }
 }
 const app = new App();

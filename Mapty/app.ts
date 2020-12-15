@@ -356,8 +356,9 @@ class App {
     });
   }
 
-  private reset() {
-    //
+  _reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
   }
 }
 
